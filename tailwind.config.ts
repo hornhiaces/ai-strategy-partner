@@ -59,9 +59,10 @@ export default {
         },
         subtle: "hsl(var(--text-subtle))",
         strong: "hsl(var(--text-strong))",
-        teal: {
-          DEFAULT: "hsl(var(--accent-teal))",
-          light: "hsl(var(--accent-teal-light))",
+        "section-alt": "hsl(var(--section-alt))",
+        blue: {
+          DEFAULT: "hsl(var(--accent-blue))",
+          light: "hsl(var(--accent-blue-light))",
         },
       },
       fontFamily: {

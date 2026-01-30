@@ -1,95 +1,75 @@
-import { CheckCircle2 } from "lucide-react";
-
 const steps = [
   {
-    number: "01",
+    year: "01",
     title: "Understand",
-    description: "Deep dive into your context, constraints, and what success actually looks like for your organization.",
-    outcomes: ["Stakeholder alignment", "Clear problem definition", "Success criteria"],
+    description: "Deep dive into your context, constraints, and what success actually looks like.",
   },
   {
-    number: "02",
+    year: "02",
     title: "Assess",
     description: "Honest evaluation of technical feasibility, data readiness, and organizational capacity.",
-    outcomes: ["Feasibility analysis", "Risk assessment", "Resource mapping"],
   },
   {
-    number: "03",
+    year: "03",
     title: "Design",
-    description: "Architecture and governance frameworks built for your specific regulatory and operational environment.",
-    outcomes: ["Technical architecture", "Governance model", "Implementation roadmap"],
+    description: "Architecture and governance frameworks built for your specific environment.",
   },
   {
-    number: "04",
+    year: "04",
     title: "Build",
     description: "Disciplined execution with continuous stakeholder alignment and course correction.",
-    outcomes: ["Working system", "Documentation", "Team enablement"],
   },
   {
-    number: "05",
+    year: "05",
     title: "Sustain",
     description: "Handoff that sticks—your team owns it, understands it, and can evolve it.",
-    outcomes: ["Knowledge transfer", "Operational playbooks", "Ongoing advisory"],
   },
 ];
 
 const DeliveryFramework = () => {
   return (
-    <section className="py-20 md:py-30 px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-subtle text-sm font-medium tracking-wide uppercase mb-4">
-            Delivery Approach
+    <section className="py-20 md:py-28 px-6 bg-section-alt">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
+            Our Approach
           </p>
-          <h2 className="text-display-sm text-strong mb-6">
-            A disciplined path from strategy to production
+          <h2 className="text-display-sm text-strong">
+            A disciplined path to production
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-            Every engagement follows a structured approach, adapted to your pace and circumstances.
-          </p>
         </div>
 
+        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line for desktop */}
-          <div className="hidden md:block absolute left-[60px] top-8 bottom-8 w-px bg-border" />
+          {/* Horizontal line */}
+          <div className="hidden md:block absolute top-[28px] left-0 right-0 h-0.5 bg-border" />
           
-          <div className="space-y-8 md:space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
             {steps.map((step, index) => (
-              <div 
-                key={step.number} 
-                className="relative flex flex-col md:flex-row gap-6 md:gap-10"
-              >
-                {/* Step number */}
-                <div className="flex-shrink-0 flex items-start">
-                  <div className="w-[120px] flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold text-sm z-10">
-                      {step.number}
-                    </div>
-                    <span className="text-lg font-semibold text-strong md:hidden">
-                      {step.title}
-                    </span>
+              <div key={step.year} className="relative">
+                {/* Timeline dot */}
+                <div className="hidden md:flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg z-10 shadow-lg shadow-primary/20">
+                    {step.year}
                   </div>
                 </div>
                 
+                {/* Mobile number */}
+                <div className="md:hidden flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
+                    {step.year}
+                  </div>
+                  <h3 className="text-lg font-semibold text-strong">{step.title}</h3>
+                </div>
+                
                 {/* Content */}
-                <div className="flex-1 bg-card rounded-lg p-6 md:p-8 border border-border/50">
-                  <h3 className="hidden md:block text-xl font-semibold text-strong mb-3">
+                <div className="md:text-center">
+                  <h3 className="hidden md:block text-lg font-semibold text-strong mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed md:pl-0 pl-13">
                     {step.description}
                   </p>
-                  <div className="flex flex-wrap gap-3">
-                    {step.outcomes.map((outcome) => (
-                      <span 
-                        key={outcome}
-                        className="inline-flex items-center gap-1.5 text-sm text-secondary-foreground bg-secondary px-3 py-1.5 rounded-full"
-                      >
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                        {outcome}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
