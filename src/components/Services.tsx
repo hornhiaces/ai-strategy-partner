@@ -5,58 +5,60 @@ const services = [
     icon: Compass,
     title: "Strategic Clarity",
     description:
-      "Cut through the noise. I help leadership teams identify where AI can genuinely move the needle—and where it can't. No hype, just honest assessment of opportunities and risks.",
+      "Cut through the noise. I help leadership teams identify where AI can genuinely move the needle—and where it can't. No hype, just honest assessment.",
   },
   {
     icon: Target,
     title: "From Pilot to Production",
     description:
-      "Most AI projects stall between proof-of-concept and real deployment. I help organizations bridge that gap with practical roadmaps, governance frameworks, and execution discipline.",
+      "Most AI projects stall between proof-of-concept and real deployment. I help organizations bridge that gap with practical roadmaps and execution discipline.",
   },
   {
     icon: Shield,
     title: "Responsible AI in Regulated Environments",
     description:
-      "Financial services, healthcare, government—I've worked in sectors where compliance isn't optional. I bring experience building AI systems that satisfy regulators and earn stakeholder trust.",
+      "Financial services, healthcare, government—I've worked in sectors where compliance isn't optional. I build AI systems that earn stakeholder trust.",
   },
   {
     icon: Zap,
-    title: "Technical Advisory & Recruiting Support",
+    title: "Technical Advisory & Recruiting",
     description:
-      "Need to evaluate AI talent or validate technical decisions? I provide objective, expert perspective to help you build the right team and make sound technology choices.",
+      "Need to evaluate AI talent or validate technical decisions? I provide objective, expert perspective to help you build the right team.",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="py-20 md:py-30 px-6 bg-gradient-subtle">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-subtle text-sm font-medium tracking-wide uppercase mb-4">
-            How I Help
-          </p>
-          <h2 className="text-display-sm text-strong mb-6">
-            Practical AI consulting
-          </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+    <section className="py-20 md:py-28 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div>
+            <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
+              How I Help
+            </p>
+            <h2 className="text-display-sm text-strong">
+              Practical AI consulting
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-md">
             I focus on outcomes that matter: working systems, informed decisions, and teams set up for success.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-surface-elevated rounded-lg p-8 border border-border/50 hover:border-border transition-colors duration-300"
+              className="group bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-lg bg-accent-teal-light flex items-center justify-center mb-6">
-                <service.icon className="h-6 w-6 accent-teal" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
+                <service.icon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-strong mb-4">
+              <h3 className="text-lg font-semibold text-strong mb-3">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {service.description}
               </p>
             </div>
