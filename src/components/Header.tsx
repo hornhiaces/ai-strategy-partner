@@ -49,11 +49,11 @@ const Header = () => {
             className="flex items-center gap-1.5 group"
           >
             <span className="text-lg font-semibold tracking-tight text-strong">
-              Agentic
+              Salinas
             </span>
             <span className="w-px h-4 bg-primary/40 group-hover:bg-primary transition-colors" />
             <span className="text-lg font-medium tracking-tight text-primary">
-              Advisory
+              AI Consulting
             </span>
           </a>
 
