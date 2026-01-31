@@ -3,27 +3,27 @@ import { Target, Compass, Shield, Zap } from "lucide-react";
 const services = [
   {
     icon: Compass,
-    title: "Strategic Clarity",
+    title: "AI Strategy",
     description:
-      "Cut through the noise. I help leadership teams identify where AI can genuinely move the needle—and where it can't. No hype, just honest assessment.",
+      "Figure out where AI actually helps your business—and where it doesn't. You get a clear plan, not a buzzword-filled deck.",
   },
   {
     icon: Target,
-    title: "From Pilot to Production",
+    title: "Pilot to Production",
     description:
-      "Most AI projects stall between proof-of-concept and real deployment. I help organizations bridge that gap with practical roadmaps and execution discipline.",
+      "Move past the demo stage. I help you ship AI that works in the real world, with the governance and ops to keep it running.",
   },
   {
     icon: Shield,
-    title: "Responsible AI in Regulated Environments",
+    title: "Regulated Industries",
     description:
-      "Financial services, healthcare, government—I've worked in sectors where compliance isn't optional. I build AI systems that earn stakeholder trust.",
+      "Finance, healthcare, government—I know what it takes to deploy AI when compliance and trust aren't negotiable.",
   },
   {
     icon: Zap,
-    title: "Technical Advisory & Recruiting",
+    title: "Technical Due Diligence",
     description:
-      "Need to evaluate AI talent or validate technical decisions? I provide objective, expert perspective to help you build the right team.",
+      "Hiring AI talent or evaluating a vendor? Get an honest, expert read before you commit.",
   },
 ];
 
@@ -31,17 +31,18 @@ const Services = () => {
   return (
     <section className="py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
-              How I Help
+              Services
             </p>
             <h2 className="text-display-sm text-strong">
-              Practical AI consulting
+              What I do
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-md">
-            I focus on outcomes that matter: working systems, informed decisions, and teams set up for success.
+          <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
+            Focused on outcomes: working systems, clear decisions, and teams ready to own it. 
+            <span className="block mt-2 text-primary font-medium">First conversation is always free.</span>
           </p>
         </div>
 
