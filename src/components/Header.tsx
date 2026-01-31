@@ -46,9 +46,15 @@ const Header = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-xl font-bold text-strong"
+            className="flex items-center gap-1.5 group"
           >
-            AI Consulting
+            <span className="text-lg font-semibold tracking-tight text-strong">
+              Agentic
+            </span>
+            <span className="w-px h-4 bg-primary/40 group-hover:bg-primary transition-colors" />
+            <span className="text-lg font-medium tracking-tight text-primary">
+              Advisory
+            </span>
           </a>
 
           {/* Desktop Navigation */}
