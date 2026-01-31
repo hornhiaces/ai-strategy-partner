@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import DeliveryFramework from "@/components/DeliveryFramework";
@@ -8,11 +9,20 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <Hero />
-      <Services />
-      <DeliveryFramework />
-      <Credibility />
-      <FinalCTA />
+      <section id="services">
+        <Services />
+      </section>
+      <section id="approach">
+        <DeliveryFramework />
+      </section>
+      <section id="about">
+        <Credibility />
+      </section>
+      <section id="contact">
+        <FinalCTA />
+      </section>
       <Footer />
     </div>
   );
