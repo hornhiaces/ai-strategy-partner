@@ -3,56 +3,46 @@ import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
   return (
-    <section className="py-12 md:py-16 px-6 bg-primary text-primary-foreground">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="text-primary-foreground/70 text-sm font-semibold tracking-wide uppercase mb-4">
-          Get Started
-        </p>
-        
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Let's have a conversation
+    <section className="py-16 md:py-20 px-6 bg-primary text-primary-foreground">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
+          Ready to talk about your AI challenge?
         </h2>
         
-        <p className="text-lg text-primary-foreground/80 mb-4 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-lg text-primary-foreground/85 mb-4 leading-relaxed max-w-2xl mx-auto">
           Every engagement starts with understanding your specific situation. 
-          I offer a <span className="font-semibold text-primary-foreground">free initial consultation</span> to 
-          explore whether I can genuinely help.
+          The first conversation is always <span className="font-semibold text-primary-foreground">free and no-obligation</span>.
         </p>
         
-        <p className="text-primary-foreground/60 mb-10">
-          No pitch, no pressure. If we're not a fit, I'll tell you honestly.
+        <p className="text-primary-foreground/60 text-sm mb-10">
+          No pitch deck, no sales pressure—just an honest conversation about whether I can help.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <Button 
             size="lg" 
             variant="secondary"
-            className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/90 shadow-lg"
+            className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300"
           >
+            <Mail className="mr-2 h-4 w-4" />
             Start a conversation
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           
           <Button 
             size="lg" 
-            variant="outline"
-            className="px-8 py-6 text-base font-medium rounded-lg border-2 border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
+            variant="ghost"
+            className="px-8 py-6 text-base font-medium rounded-lg text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300"
           >
-            <Linkedin className="mr-2 h-4 w-4" />
+            <Linkedin className="mr-2 h-5 w-5" />
             Connect on LinkedIn
           </Button>
         </div>
 
-        <div className="flex items-center justify-center gap-6 text-sm text-primary-foreground/60">
-          <a 
-            href="#" 
-            className="inline-flex items-center gap-2 hover:text-primary-foreground transition-colors"
-          >
-            <Mail className="h-4 w-4" />
-            Email directly
-          </a>
-          <span className="text-primary-foreground/30">•</span>
-          <span>Based in [City] • Working globally</span>
+        <div className="pt-8 border-t border-primary-foreground/15">
+          <p className="text-sm text-primary-foreground/50">
+            Based in Europe · Working with clients globally
+          </p>
         </div>
       </div>
     </section>
