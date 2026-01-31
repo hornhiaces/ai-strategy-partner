@@ -1,4 +1,5 @@
 import { Search, BarChart3, PenTool, Hammer, RefreshCw } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -34,10 +35,16 @@ const steps = [
 ];
 
 const DeliveryFramework = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
+
   return (
     <section id="approach" className="py-12 md:py-16 px-6 bg-section-alt">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-12 animate-on-scroll ${headerVisible ? 'is-visible' : ''}`}
+        >
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
             The Framework
           </p>
@@ -50,13 +57,20 @@ const DeliveryFramework = () => {
         </div>
 
         {/* Desktop Timeline */}
-        <div className="hidden md:block relative">
+        <div 
+          ref={contentRef}
+          className={`hidden md:block relative animate-on-scroll ${contentVisible ? 'is-visible' : ''}`}
+        >
           {/* Connecting line */}
           <div className="absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           
           <div className="grid grid-cols-5 gap-4">
             {steps.map((step, index) => (
-              <div key={step.num} className="relative text-center group">
+              <div 
+                key={step.num} 
+                className="relative text-center group"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
                 {/* Icon circle */}
                 <div className="relative z-10 w-20 h-20 mx-auto rounded-2xl bg-background border-2 border-primary/20 group-hover:border-primary/50 flex items-center justify-center mb-5 shadow-lg shadow-primary/5 transition-all duration-300">
                   <step.icon className="h-8 w-8 text-primary" />
@@ -77,11 +91,12 @@ const DeliveryFramework = () => {
         </div>
 
         {/* Mobile Stack */}
-        <div className="md:hidden space-y-4">
-          {steps.map((step) => (
+        <div className={`md:hidden space-y-4 animate-on-scroll ${contentVisible ? 'is-visible' : ''}`}>
+          {steps.map((step, index) => (
             <div 
               key={step.num}
-              className="flex items-start gap-4 p-4 bg-background rounded-xl border border-border"
+              className={`flex items-start gap-4 p-4 bg-background rounded-xl border border-border stagger-${Math.min(index + 1, 5)}`}
+              style={{ transitionDelay: `${index * 80}ms` }}
             >
               <div className="relative flex-shrink-0">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">

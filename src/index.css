@@ -162,4 +162,68 @@
   .text-accent-blue {
     color: hsl(var(--accent-blue));
   }
+
+  /* Scroll-triggered entrance animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered delays for children */
+  .stagger-1 { transition-delay: 0ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 200ms; }
+  .stagger-4 { transition-delay: 300ms; }
+  .stagger-5 { transition-delay: 400ms; }
+
+  /* Hero-specific load animations */
+  .animate-hero-load {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: heroFadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-hero-load-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-hero-load-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-hero-load-delay-3 {
+    animation-delay: 0.35s;
+  }
+
+  .animate-hero-load-delay-4 {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll,
+    .animate-hero-load {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      animation: none;
+    }
+  }
 }
