@@ -29,7 +29,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-20 md:py-28 px-6">
+    <section className="py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>

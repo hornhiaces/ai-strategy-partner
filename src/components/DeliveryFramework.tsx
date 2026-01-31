@@ -28,7 +28,7 @@ const steps = [
 
 const DeliveryFramework = () => {
   return (
-    <section className="py-20 md:py-28 px-6 bg-section-alt">
+    <section className="py-12 md:py-16 px-6 bg-section-alt">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">

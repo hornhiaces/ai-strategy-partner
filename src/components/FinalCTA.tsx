@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
   return (
-    <section className="py-20 md:py-28 px-6 bg-primary text-primary-foreground">
+    <section className="py-12 md:py-16 px-6 bg-primary text-primary-foreground">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-primary-foreground/70 text-sm font-semibold tracking-wide uppercase mb-4">
           Get Started
