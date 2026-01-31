@@ -23,18 +23,24 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              asChild
             >
-              Start a conversation
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <a href="mailto:larrysalinas@mac.com">
+                Start a conversation
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
             
             <Button 
               variant="outline" 
               size="lg" 
               className="px-6 py-5 text-base font-medium rounded-lg border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300"
+              asChild
             >
-              <Linkedin className="mr-2 h-4 w-4" />
-              Connect on LinkedIn
+              <a href="https://linkedin.com/in/larry-salinas-mba-56394934" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="mr-2 h-4 w-4" />
+                Connect on LinkedIn
+              </a>
             </Button>
           </div>
         </div>
