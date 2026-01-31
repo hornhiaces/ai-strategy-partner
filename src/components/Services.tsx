@@ -31,17 +31,15 @@ const Services = () => {
   return (
     <section className="py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div>
-            <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
-              Services
-            </p>
-            <h2 className="text-display-sm text-strong">
-              What I do
-            </h2>
-          </div>
-          <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
-            Focused on outcomes: working systems, clear decisions, and teams ready to own it. 
+        <div className="text-center mb-12">
+          <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
+            Services
+          </p>
+          <h2 className="text-display-sm text-strong mb-4">
+            What I do
+          </h2>
+          <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
+            Focused on outcomes: working systems, clear decisions, and teams ready to own it.
             <span className="block mt-2 text-primary font-medium">First conversation is always free.</span>
           </p>
         </div>
