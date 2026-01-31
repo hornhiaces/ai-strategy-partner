@@ -1,79 +1,104 @@
+import { Search, BarChart3, PenTool, Hammer, RefreshCw } from "lucide-react";
+
 const steps = [
   {
-    year: "01",
+    num: "01",
+    icon: Search,
     title: "Understand",
-    description: "Deep dive into your context, constraints, and what success actually looks like.",
+    description: "Your context, constraints, and what success actually looks like.",
   },
   {
-    year: "02",
+    num: "02",
+    icon: BarChart3,
     title: "Assess",
-    description: "Honest evaluation of technical feasibility, data readiness, and organizational capacity.",
+    description: "Technical feasibility, data readiness, and organizational capacity.",
   },
   {
-    year: "03",
+    num: "03",
+    icon: PenTool,
     title: "Design",
-    description: "Architecture and governance frameworks built for your specific environment.",
+    description: "Architecture and governance built for your specific environment.",
   },
   {
-    year: "04",
+    num: "04",
+    icon: Hammer,
     title: "Build",
-    description: "Disciplined execution with continuous stakeholder alignment and course correction.",
+    description: "Disciplined execution with continuous alignment and course correction.",
   },
   {
-    year: "05",
+    num: "05",
+    icon: RefreshCw,
     title: "Sustain",
-    description: "Handoff that sticks—your team owns it, understands it, and can evolve it.",
+    description: "Handoff that sticks—your team owns it and can evolve it.",
   },
 ];
 
 const DeliveryFramework = () => {
   return (
-    <section className="py-12 md:py-16 px-6 bg-section-alt">
+    <section id="approach" className="py-12 md:py-16 px-6 bg-section-alt">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
             The Framework
           </p>
-          <h2 className="text-display-sm text-strong">
+          <h2 className="text-display-sm text-strong mb-4">
             From strategy to production
           </h2>
+          <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
+            A disciplined, repeatable approach that gets AI out of the lab and into your business.
+          </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Horizontal line */}
-          <div className="hidden md:block absolute top-[28px] left-0 right-0 h-0.5 bg-border" />
+        {/* Desktop Timeline */}
+        <div className="hidden md:block relative">
+          {/* Connecting line */}
+          <div className="absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
+          <div className="grid grid-cols-5 gap-4">
             {steps.map((step, index) => (
-              <div key={step.year} className="relative">
-                {/* Timeline dot */}
-                <div className="hidden md:flex items-center justify-center mb-6">
-                  <div className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg z-10 shadow-lg shadow-primary/20">
-                    {step.year}
-                  </div>
+              <div key={step.num} className="relative text-center group">
+                {/* Icon circle */}
+                <div className="relative z-10 w-20 h-20 mx-auto rounded-2xl bg-background border-2 border-primary/20 group-hover:border-primary/50 flex items-center justify-center mb-5 shadow-lg shadow-primary/5 transition-all duration-300">
+                  <step.icon className="h-8 w-8 text-primary" />
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
+                    {step.num}
+                  </span>
                 </div>
                 
-                {/* Mobile number */}
-                <div className="md:hidden flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
-                    {step.year}
-                  </div>
-                  <h3 className="text-lg font-semibold text-strong">{step.title}</h3>
-                </div>
-                
-                {/* Content */}
-                <div className="md:text-center">
-                  <h3 className="hidden md:block text-lg font-semibold text-strong mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed md:pl-0 pl-13">
-                    {step.description}
-                  </p>
-                </div>
+                <h3 className="text-base font-semibold text-strong mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed px-2">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Stack */}
+        <div className="md:hidden space-y-4">
+          {steps.map((step) => (
+            <div 
+              key={step.num}
+              className="flex items-start gap-4 p-4 bg-background rounded-xl border border-border"
+            >
+              <div className="relative flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <step.icon className="h-5 w-5 text-primary" />
+                </div>
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
+                  {step.num}
+                </span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-strong mb-1">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
