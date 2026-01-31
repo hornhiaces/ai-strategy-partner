@@ -5,21 +5,21 @@ const Hero = () => {
   return (
     <section className="flex items-center px-6 pt-24 pb-12 md:pt-32 md:pb-16 bg-gradient-subtle">
       <div className="max-w-6xl mx-auto w-full">
-        <div className="max-w-2xl animate-fade-in">
-          <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
+        <div className="max-w-2xl">
+          <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3 animate-hero-load animate-hero-load-delay-1">
             Enterprise AI Advisory
           </p>
           
-          <h1 className="text-4xl md:text-display text-strong mb-5 leading-tight">
+          <h1 className="text-4xl md:text-display text-strong mb-5 leading-tight animate-hero-load animate-hero-load-delay-2">
             AI that <span className="text-primary">ships</span>—not just slides
           </h1>
           
-          <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed animate-hero-load animate-hero-load-delay-3">
             I help enterprise leaders, founders, and organizations navigate the practical realities of 
             AI and Generative AI—from strategic clarity to working systems, especially in regulated environments.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 animate-hero-load animate-hero-load-delay-4">
             <Button 
               size="lg" 
               className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"

@@ -1,10 +1,16 @@
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const FinalCTA = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section className="py-16 md:py-20 px-6 bg-primary text-primary-foreground">
-      <div className="max-w-3xl mx-auto text-center">
+      <div 
+        ref={ref}
+        className={`max-w-3xl mx-auto text-center animate-on-scroll ${isVisible ? 'is-visible' : ''}`}
+      >
         <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
           Ready to talk about your AI challenge?
         </h2>

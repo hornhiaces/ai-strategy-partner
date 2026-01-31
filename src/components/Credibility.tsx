@@ -1,22 +1,37 @@
 import { Building2, Shield, Users } from "lucide-react";
-const credentials = [{
-  icon: Building2,
-  title: "Enterprise Scale",
-  description: "Led AI initiatives at organizations with complex stakeholder landscapes and high stakes"
-}, {
-  icon: Shield,
-  title: "Regulated Industries",
-  description: "Finance, healthcare, government—where compliance and trust aren't optional"
-}, {
-  icon: Users,
-  title: "Cross-Functional Leadership",
-  description: "Bridged the gap between technical teams, executives, and business stakeholders"
-}];
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+const credentials = [
+  {
+    icon: Building2,
+    title: "Enterprise Scale",
+    description: "Led AI initiatives at organizations with complex stakeholder landscapes and high stakes"
+  },
+  {
+    icon: Shield,
+    title: "Regulated Industries",
+    description: "Finance, healthcare, government—where compliance and trust aren't optional"
+  },
+  {
+    icon: Users,
+    title: "Cross-Functional Leadership",
+    description: "Bridged the gap between technical teams, executives, and business stakeholders"
+  }
+];
+
 const Credibility = () => {
-  return <section id="about" className="py-12 md:py-16 px-6">
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
+  return (
+    <section id="about" className="py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-12 animate-on-scroll ${headerVisible ? 'is-visible' : ''}`}
+        >
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
             About
           </p>
@@ -30,31 +45,35 @@ const Credibility = () => {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
-          <div className="text-center p-5 md:p-6 bg-section-alt rounded-xl border border-transparent hover:border-primary/20 transition-colors duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">15+</div>
-            <div className="text-sm text-muted-foreground">Years in tech</div>
-          </div>
-          <div className="text-center p-5 md:p-6 bg-section-alt rounded-xl border border-transparent hover:border-primary/20 transition-colors duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">50+</div>
-            <div className="text-sm text-muted-foreground">AI/Tech projects</div>
-          </div>
-          <div className="text-center p-5 md:p-6 bg-section-alt rounded-xl border border-transparent hover:border-primary/20 transition-colors duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">3</div>
-            <div className="text-sm text-muted-foreground">Regulated sectors</div>
-          </div>
-          <div className="text-center p-5 md:p-6 bg-section-alt rounded-xl border border-transparent hover:border-primary/20 transition-colors duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">100%</div>
-            <div className="text-sm text-muted-foreground">Independent</div>
-          </div>
+        <div 
+          ref={statsRef}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12"
+        >
+          {[
+            { value: "15+", label: "Years in tech" },
+            { value: "50+", label: "AI/Tech projects" },
+            { value: "3", label: "Regulated sectors" },
+            { value: "100%", label: "Independent" },
+          ].map((stat, index) => (
+            <div 
+              key={stat.label}
+              className={`text-center p-5 md:p-6 bg-section-alt rounded-xl border border-transparent hover:border-primary/20 transition-colors duration-300 animate-on-scroll stagger-${index + 1} ${statsVisible ? 'is-visible' : ''}`}
+            >
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
         </div>
 
         {/* Credentials */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {credentials.map(cred => (
+        <div 
+          ref={cardsRef}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          {credentials.map((cred, index) => (
             <div 
               key={cred.title} 
-              className="group p-6 bg-background rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+              className={`group p-6 bg-background rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 animate-on-scroll stagger-${index + 1} ${cardsVisible ? 'is-visible' : ''}`}
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
                 <cred.icon className="h-6 w-6 text-primary" />
@@ -67,6 +86,8 @@ const Credibility = () => {
           ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Credibility;
