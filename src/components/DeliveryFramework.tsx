@@ -30,12 +30,12 @@ const DeliveryFramework = () => {
   return (
     <section className="py-12 md:py-16 px-6 bg-section-alt">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
-            Our Approach
+            The Framework
           </p>
           <h2 className="text-display-sm text-strong">
-            A disciplined path to production
+            From strategy to production
           </h2>
         </div>
 

@@ -7,13 +7,11 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full">
         <div className="max-w-2xl animate-fade-in">
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3">
-            AI Consulting
+            Enterprise AI Advisory
           </p>
           
           <h1 className="text-4xl md:text-display text-strong mb-5 leading-tight">
-            Moving AI from idea to{" "}
-            <span className="text-primary">production</span>
-            —responsibly
+            AI that <span className="text-primary">ships</span>—not just slides
           </h1>
           
           <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
