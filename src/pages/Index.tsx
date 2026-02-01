@@ -5,6 +5,7 @@ import DeliveryFramework from "@/components/DeliveryFramework";
 import Credibility from "@/components/Credibility";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <FinalCTA />
       </section>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
