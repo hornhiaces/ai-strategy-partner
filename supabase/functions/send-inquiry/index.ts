@@ -82,7 +82,7 @@ ${context}
       },
       body: JSON.stringify({
         from: "AI Advisor Chatbot <onboarding@resend.dev>",
-        to: ["larrysalinas@mac.com"],
+        to: ["salinasaiconsulting@outlook.com"],
         subject: subject,
         html: htmlContent,
         reply_to: email,

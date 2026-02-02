@@ -31,7 +31,7 @@ const FinalCTA = () => {
             className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300"
             asChild
           >
-            <a href="mailto:larrysalinas@mac.com">
+            <a href="mailto:salinasaiconsulting@outlook.com">
               <Mail className="mr-2 h-4 w-4" />
               Start a conversation
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
