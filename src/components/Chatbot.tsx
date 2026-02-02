@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, User, Bot, Mail, ArrowLeft } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, User, Bot, Mail, ArrowLeft, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/hooks/use-toast";
+import { chatMessageSchema, contactFormSchema, checkRateLimit } from "@/lib/validation";
 
 type Message = {
   role: "user" | "assistant";
@@ -21,10 +22,15 @@ type FormData = {
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const INQUIRY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-inquiry`;
 
+// Rate limit: 20 messages per minute for chat, 5 form submissions per 5 minutes
+const CHAT_RATE_LIMIT = { max: 20, window: 60000 };
+const FORM_RATE_LIMIT = { max: 5, window: 300000 };
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+  const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -33,6 +39,7 @@ const Chatbot = () => {
     },
   ]);
   const [input, setInput] = useState("");
+  const [inputError, setInputError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,6 +58,25 @@ const Chatbot = () => {
   }, [isOpen]);
 
   const streamChat = async (userMessage: string) => {
+    // Validate input
+    const validation = chatMessageSchema.safeParse({ content: userMessage });
+    if (!validation.success) {
+      setInputError(validation.error.errors[0]?.message || "Invalid input");
+      return;
+    }
+
+    // Check rate limit
+    const rateCheck = checkRateLimit("chat", CHAT_RATE_LIMIT.max, CHAT_RATE_LIMIT.window);
+    if (!rateCheck.allowed) {
+      toast({
+        title: "Slow down",
+        description: `Please wait ${rateCheck.retryAfter} seconds before sending another message.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setInputError("");
     const newMessages: Message[] = [...messages, { role: "user", content: userMessage }];
     setMessages(newMessages);
     setIsLoading(true);
@@ -116,7 +142,6 @@ const Chatbot = () => {
         }
       }
     } catch (error) {
-      console.error("Chat error:", error);
       toast({
         title: "Connection issue",
         description: "Unable to connect. Please try again.",
@@ -140,21 +165,26 @@ const Chatbot = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      toast({
-        title: "Missing fields",
-        description: "Please fill in all fields.",
-        variant: "destructive",
+    setFormErrors({});
+
+    // Validate form data
+    const validation = contactFormSchema.safeParse(formData);
+    if (!validation.success) {
+      const errors: Partial<FormData> = {};
+      validation.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof FormData;
+        if (field) errors[field] = err.message;
       });
+      setFormErrors(errors);
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    // Check rate limit
+    const rateCheck = checkRateLimit("form", FORM_RATE_LIMIT.max, FORM_RATE_LIMIT.window);
+    if (!rateCheck.allowed) {
       toast({
-        title: "Invalid email",
-        description: "Please enter a valid email address.",
+        title: "Too many submissions",
+        description: `Please wait ${rateCheck.retryAfter} seconds before submitting again.`,
         variant: "destructive",
       });
       return;
@@ -175,9 +205,9 @@ const Chatbot = () => {
         },
         body: JSON.stringify({
           type: "consultation",
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
+          name: validation.data.name,
+          email: validation.data.email,
+          message: validation.data.message,
           context: chatContext,
         }),
       });
@@ -201,8 +231,7 @@ const Chatbot = () => {
           content: "Thanks for reaching out! Your message has been sent to Larry. He'll get back to you shortly.",
         },
       ]);
-    } catch (error) {
-      console.error("Form submission error:", error);
+    } catch {
       toast({
         title: "Failed to send",
         description: "Please try again or email directly.",
@@ -228,7 +257,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-primary text-primary-foreground">
             <div className="flex items-center gap-2">
@@ -255,8 +284,8 @@ const Chatbot = () => {
 
           {/* Content */}
           {showForm ? (
-            <form onSubmit={handleFormSubmit} className="flex-1 p-4 flex flex-col gap-4">
-              <div className="space-y-2">
+            <form onSubmit={handleFormSubmit} className="flex-1 p-4 flex flex-col gap-3 overflow-y-auto">
+              <div className="space-y-1.5">
                 <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
@@ -264,9 +293,14 @@ const Chatbot = () => {
                   onChange={(e) => setFormData((f) => ({ ...f, name: e.target.value }))}
                   placeholder="Your name"
                   disabled={isSubmitting}
+                  maxLength={100}
+                  aria-invalid={!!formErrors.name}
                 />
+                {formErrors.name && (
+                  <p className="text-xs text-destructive">{formErrors.name}</p>
+                )}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -275,9 +309,14 @@ const Chatbot = () => {
                   onChange={(e) => setFormData((f) => ({ ...f, email: e.target.value }))}
                   placeholder="you@example.com"
                   disabled={isSubmitting}
+                  maxLength={255}
+                  aria-invalid={!!formErrors.email}
                 />
+                {formErrors.email && (
+                  <p className="text-xs text-destructive">{formErrors.email}</p>
+                )}
               </div>
-              <div className="space-y-2 flex-1">
+              <div className="space-y-1.5 flex-1">
                 <Label htmlFor="message">Message</Label>
                 <Textarea
                   id="message"
@@ -285,9 +324,26 @@ const Chatbot = () => {
                   onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
                   placeholder="How can Larry help you?"
                   disabled={isSubmitting}
-                  className="min-h-[100px] resize-none"
+                  className="min-h-[80px] resize-none"
+                  maxLength={2000}
+                  aria-invalid={!!formErrors.message}
                 />
+                {formErrors.message && (
+                  <p className="text-xs text-destructive">{formErrors.message}</p>
+                )}
+                <p className="text-xs text-muted-foreground text-right">
+                  {formData.message.length}/2000
+                </p>
               </div>
+              
+              {/* Privacy notice */}
+              <div className="flex items-start gap-2 p-2 bg-muted rounded-lg">
+                <ShieldAlert className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-muted-foreground">
+                  Please don't share sensitive personal information. Your message will be sent via email.
+                </p>
+              </div>
+
               <Button type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -339,14 +395,23 @@ const Chatbot = () => {
               {/* Input + Contact button */}
               <div className="p-3 border-t border-border space-y-2">
                 <form onSubmit={handleSubmit} className="flex gap-2">
-                  <Input
-                    ref={inputRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Type your message..."
-                    disabled={isLoading}
-                    className="flex-1"
-                  />
+                  <div className="flex-1">
+                    <Input
+                      ref={inputRef}
+                      value={input}
+                      onChange={(e) => {
+                        setInput(e.target.value);
+                        setInputError("");
+                      }}
+                      placeholder="Type your message..."
+                      disabled={isLoading}
+                      maxLength={2000}
+                      aria-invalid={!!inputError}
+                    />
+                    {inputError && (
+                      <p className="text-xs text-destructive mt-1">{inputError}</p>
+                    )}
+                  </div>
                   <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                     {isLoading ? (
                       <Loader2 className="h-4 w-4 animate-spin" />

@@ -19,15 +19,13 @@ const Footer = () => {
           {/* Links */}
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a 
-              href="#" 
+              href="https://linkedin.com/in/larry-salinas-mba-56394934"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-primary transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
-            </a>
-            <span className="w-px h-4 bg-border" />
-            <a href="#" className="hover:text-primary transition-colors duration-200">
-              Privacy
             </a>
           </div>
         </div>
