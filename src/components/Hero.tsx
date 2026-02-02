@@ -25,7 +25,7 @@ const Hero = () => {
               className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
               asChild
             >
-              <a href="mailto:larrysalinas@mac.com">
+              <a href="mailto:salinasaiconsulting@outlook.com">
                 Start a conversation
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>

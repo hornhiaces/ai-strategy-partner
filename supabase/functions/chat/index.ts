@@ -25,7 +25,7 @@ CONVERSATION GUIDELINES:
 
 WHAT TO OFFER:
 - Free initial consultation (no obligation)
-- Direct email: larrysalinas@mac.com
+- Direct email: salinasaiconsulting@outlook.com
 - LinkedIn connection
 
 When users are ready to connect, ask for:
