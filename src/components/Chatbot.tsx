@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, User, Bot, Mail, ArrowLeft, ShieldAlert } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, User, Bot, Mail, ArrowLeft, ShieldAlert, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -355,6 +355,23 @@ const Chatbot = () => {
             </form>
           ) : (
             <>
+              {/* Welcome Banner */}
+              <div className="mx-3 mt-3 px-3.5 py-3 rounded-lg bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border border-primary/15">
+                <div className="flex items-start gap-2.5">
+                  <div className="flex-shrink-0 mt-0.5 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Sparkles className="h-3.5 w-3.5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-foreground leading-tight">
+                      Got questions? Ask away.
+                    </p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                      Get instant answers about our services, approach, and how AI consulting can help your business.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <ScrollArea className="flex-1 p-4" ref={scrollRef}>
                 <div className="space-y-4">
                   {messages.map((msg, i) => (
