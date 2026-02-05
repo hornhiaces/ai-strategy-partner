@@ -33,7 +33,7 @@ const Services = () => {
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
 
   return (
-    <section className="py-12 md:py-16 px-6">
+    <section id="services" className="py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div 
           ref={headerRef}
