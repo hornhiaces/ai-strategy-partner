@@ -1,0 +1,20 @@
+{
+  "name": "Salinas AI Consulting",
+  "short_name": "Salinas AI",
+  "description": "Enterprise AI advisory services helping organizations navigate AI strategy, implementation, and governance in regulated industries.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b6cf5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "consulting", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

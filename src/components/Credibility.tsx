@@ -1,4 +1,4 @@
-import { Building2, Shield, Users } from "lucide-react";
+import { Building2, Shield, Users, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const credentials = [
@@ -17,6 +17,13 @@ const credentials = [
     title: "Cross-Functional Leadership",
     description: "Bridged the gap between technical teams, executives, and business stakeholders"
   }
+];
+
+const trustIndicators = [
+  "Independent & Vendor-Neutral",
+  "MBA Qualified",
+  "Enterprise Vetted",
+  "NDA Protected"
 ];
 
 const Credibility = () => {
@@ -66,13 +73,13 @@ const Credibility = () => {
         </div>
 
         {/* Credentials */}
-        <div 
+        <div
           ref={cardsRef}
-          className="grid md:grid-cols-3 gap-6"
+          className="grid md:grid-cols-3 gap-6 mb-12"
         >
           {credentials.map((cred, index) => (
-            <div 
-              key={cred.title} 
+            <div
+              key={cred.title}
               className={`group p-6 bg-background rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 animate-on-scroll stagger-${index + 1} ${cardsVisible ? 'is-visible' : ''}`}
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
@@ -82,6 +89,19 @@ const Credibility = () => {
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {cred.description}
               </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="flex flex-wrap justify-center gap-3 pt-8 border-t border-border/50">
+          {trustIndicators.map((indicator) => (
+            <div
+              key={indicator}
+              className="trust-badge"
+            >
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              <span>{indicator}</span>
             </div>
           ))}
         </div>
