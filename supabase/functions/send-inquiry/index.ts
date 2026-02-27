@@ -1,10 +1,20 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+const ALLOWED_ORIGINS = [
+  "https://salinas-ai-consulting.com",
+  "https://www.salinas-ai-consulting.com",
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get("origin") || "";
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
+  };
+}
 
 interface InquiryRequest {
   type: "question" | "consultation";
@@ -17,6 +27,16 @@ interface InquiryRequest {
 // Server-side rate limiting (simple in-memory - resets on function restart)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT = { maxRequests: 5, windowMs: 300000 }; // 5 requests per 5 minutes
+
+// Periodic cleanup to prevent memory leak from stale rate limit entries
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, record] of rateLimitMap) {
+    if (now > record.resetTime) {
+      rateLimitMap.delete(key);
+    }
+  }
+}, 120000);
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
   const now = Date.now();
@@ -113,24 +133,44 @@ function escapeHtml(text: string): string {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Only allow POST
+  if (req.method !== "POST") {
+    return new Response(
+      JSON.stringify({ error: "Method not allowed" }),
+      { status: 405, headers: { "Content-Type": "application/json", ...corsHeaders } }
+    );
+  }
+
   try {
     // Rate limiting based on client IP
-    const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+                     req.headers.get("x-real-ip") || "unknown";
     const rateCheck = checkRateLimit(clientIP);
     if (!rateCheck.allowed) {
       return new Response(
         JSON.stringify({ error: `Too many requests. Try again in ${rateCheck.retryAfter} seconds.` }),
-        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders, "Retry-After": String(rateCheck.retryAfter) } }
       );
     }
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
       throw new Error("Email service not configured");
+    }
+
+    // Enforce request body size limit (20KB)
+    const contentLength = req.headers.get("content-length");
+    if (contentLength && parseInt(contentLength, 10) > 20480) {
+      return new Response(
+        JSON.stringify({ error: "Request body too large" }),
+        { status: 413, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     // Parse and validate input
@@ -160,22 +200,22 @@ const handler = async (req: Request): Promise<Response> => {
     const htmlContent = `
       <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 12px;">
-          ${type === "consultation" ? "📅 New Consultation Request" : "💬 New Question"}
+          ${type === "consultation" ? "New Consultation Request" : "New Question"}
         </h2>
-        
+
         <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <p style="margin: 0 0 8px 0;"><strong>From:</strong> ${escapeHtml(name)}</p>
           <p style="margin: 0 0 8px 0;"><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
           <p style="margin: 0;"><strong>Type:</strong> ${type === "consultation" ? "Consultation Request" : "General Question"}</p>
         </div>
-        
+
         <div style="margin: 20px 0;">
           <h3 style="color: #374151; margin-bottom: 12px;">Message:</h3>
           <div style="background: #fff; border: 1px solid #e5e7eb; padding: 16px; border-radius: 8px; white-space: pre-wrap;">
 ${escapeHtml(message)}
           </div>
         </div>
-        
+
         ${context ? `
         <div style="margin: 20px 0;">
           <h3 style="color: #374151; margin-bottom: 12px;">Chat Context:</h3>
@@ -184,7 +224,7 @@ ${escapeHtml(context)}
           </div>
         </div>
         ` : ''}
-        
+
         <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;">
         <p style="color: #6b7280; font-size: 12px;">
           This message was sent via the AI chatbot on your website.
@@ -208,14 +248,11 @@ ${escapeHtml(context)}
     });
 
     if (!emailResponse.ok) {
-      const errorData = await emailResponse.text();
-      console.error("Resend API error:", errorData);
+      console.error("Resend API error:", emailResponse.status);
       throw new Error("Failed to send email");
     }
 
-    const result = await emailResponse.json();
-
-    return new Response(JSON.stringify({ success: true, id: result.id }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });

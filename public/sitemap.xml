@@ -48,6 +48,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://salinas-ai-consulting.com/hands-on-ai-product-coaching</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- LLM-friendly summary page for AI search visibility -->
   <url>
     <loc>https://salinas-ai-consulting.com/llm.html</loc>

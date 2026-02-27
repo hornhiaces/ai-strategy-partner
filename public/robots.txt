@@ -73,7 +73,7 @@ Disallow: /admin
 Disallow: /api/
 Disallow: /_private/
 Disallow: /dashboard
-Disallow: /*.json$
+Disallow: /*.json
 
 # Sitemap location
 Sitemap: https://salinas-ai-consulting.com/sitemap.xml

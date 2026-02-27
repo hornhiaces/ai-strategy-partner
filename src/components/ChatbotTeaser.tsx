@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Lottie from "lottie-react";
 import robotAnimation from "@/assets/robot-animation.json";
 
@@ -9,7 +9,7 @@ type ChatbotTeaserProps = {
 
 const MESSAGES = [
   "Need help with AI? Ask me!",
-  "Book a free strategy call 📅",
+  "Book a free strategy call",
   "Questions? I've got answers!",
   "Let's talk AI for your business",
 ];
@@ -18,26 +18,38 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
   const [visible, setVisible] = useState(false);
   const [messageIndex, setMessageIndex] = useState(0);
   const [fadeState, setFadeState] = useState<"in" | "out" | "hidden">("hidden");
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearTimers = useCallback(() => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    if (fadeTimerRef.current) {
+      clearTimeout(fadeTimerRef.current);
+      fadeTimerRef.current = null;
+    }
+  }, []);
 
   const showTeaser = useCallback(() => {
     if (chatOpen) return;
+    clearTimers();
     setVisible(true);
     setFadeState("in");
 
     // Hide after 6 seconds
-    const hideTimer = setTimeout(() => {
+    hideTimerRef.current = setTimeout(() => {
       setFadeState("out");
-      setTimeout(() => {
+      fadeTimerRef.current = setTimeout(() => {
         setVisible(false);
         setFadeState("hidden");
         setMessageIndex((prev) => (prev + 1) % MESSAGES.length);
       }, 400);
     }, 6000);
+  }, [chatOpen, clearTimers]);
 
-    return () => clearTimeout(hideTimer);
-  }, [chatOpen]);
-
-  // Show on initial load after 3s, then every 30s
+  // Show on initial load after 1.5s, then every 30s
   useEffect(() => {
     const initialTimer = setTimeout(() => {
       showTeaser();
@@ -50,16 +62,25 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
     return () => {
       clearTimeout(initialTimer);
       clearInterval(interval);
+      clearTimers();
     };
-  }, [showTeaser]);
+  }, [showTeaser, clearTimers]);
 
   // Hide when chat opens
   useEffect(() => {
     if (chatOpen) {
+      clearTimers();
       setVisible(false);
       setFadeState("hidden");
     }
-  }, [chatOpen]);
+  }, [chatOpen, clearTimers]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick();
+    }
+  };
 
   if (!visible || chatOpen) return null;
 
@@ -71,7 +92,9 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
           : "opacity-0 translate-y-2"
       }`}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       role="button"
+      tabIndex={0}
       aria-label="Open AI assistant chat"
     >
       {/* Speech bubble */}
