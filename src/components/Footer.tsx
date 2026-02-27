@@ -103,8 +103,6 @@ const Footer = () => {
               </a>
               <a
                 href="https://linkedin.com/in/larry-salinas-mba-56394934"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 <Linkedin className="h-4 w-4" />
