@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+// Comprehensive XSS pattern detection
+const XSS_PATTERN = /<script|<\/script|javascript:|on\w+\s*=|<iframe|<object|<embed|<form|<img\s[^>]*onerror|<svg\s[^>]*onload|data:\s*text\/html|vbscript:|expression\s*\(/i;
+
+const noXSS = (fieldName: string) =>
+  z.string().refine(
+    (val) => !XSS_PATTERN.test(val),
+    `Invalid characters detected in ${fieldName}`
+  );
+
 // Chatbot message validation
 export const chatMessageSchema = z.object({
   content: z
@@ -7,10 +16,7 @@ export const chatMessageSchema = z.object({
     .trim()
     .min(1, "Message cannot be empty")
     .max(2000, "Message must be less than 2000 characters")
-    .refine(
-      (val) => !/<script|javascript:|on\w+=/i.test(val),
-      "Invalid characters detected"
-    ),
+    .pipe(noXSS("message")),
 });
 
 // Contact form validation
@@ -20,10 +26,7 @@ export const contactFormSchema = z.object({
     .trim()
     .min(1, "Name is required")
     .max(100, "Name must be less than 100 characters")
-    .refine(
-      (val) => !/<script|javascript:|on\w+=/i.test(val),
-      "Invalid characters detected"
-    ),
+    .pipe(noXSS("name")),
   email: z
     .string()
     .trim()
@@ -34,10 +37,7 @@ export const contactFormSchema = z.object({
     .trim()
     .min(1, "Message is required")
     .max(2000, "Message must be less than 2000 characters")
-    .refine(
-      (val) => !/<script|javascript:|on\w+=/i.test(val),
-      "Invalid characters detected"
-    ),
+    .pipe(noXSS("message")),
 });
 
 export type ChatMessage = z.infer<typeof chatMessageSchema>;
