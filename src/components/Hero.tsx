@@ -1,4 +1,4 @@
-import { ArrowRight, Linkedin, Building2, Rocket } from "lucide-react";
+import { ArrowRight, Linkedin, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -44,13 +44,6 @@ const Hero = () => {
             </a>
           </div>
 
-          {/* Trust indicators */}
-          <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground animate-hero-load animate-hero-load-delay-4">
-            <div className="flex items-center gap-1.5">
-              <Building2 className="h-3.5 w-3.5 text-primary/70" />
-              <span>Enterprise &amp; Startups</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
