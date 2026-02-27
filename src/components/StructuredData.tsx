@@ -29,7 +29,7 @@ export const OrganizationSchema = () => {
           height: 630,
         },
         description:
-          "Enterprise AI consulting firm specializing in AI strategy, implementation, and governance for regulated industries including healthcare, financial services, and government.",
+          "Enterprise-level AI strategy with hands-on execution capability. AI consulting for enterprises, founders, and small businesses in regulated and emerging industries.",
         foundingDate: "2024",
         founder: {
           "@type": "Person",
@@ -60,6 +60,9 @@ export const OrganizationSchema = () => {
           "Enterprise AI Automation",
           "AI Integration",
           "AI Advisory Services",
+          "AI Product Coaching",
+          "Custom GPT Consulting",
+          "AI App Development",
         ],
       },
       {
@@ -68,7 +71,7 @@ export const OrganizationSchema = () => {
         name: "Larry Salinas",
         jobTitle: "Enterprise AI Consultant",
         description:
-          "Independent AI consultant with 15+ years of experience helping enterprises implement AI solutions in regulated industries including healthcare, financial services, and government.",
+          "Independent AI consultant with 15+ years of experience. Enterprise AI strategy and hands-on AI product coaching for organizations of any size.",
         url: SITE_URL,
         sameAs: ["https://linkedin.com/in/larry-salinas-mba-56394934"],
         alumniOf: {
@@ -110,7 +113,7 @@ export const OrganizationSchema = () => {
         },
         serviceType: "AI Consulting",
         description:
-          "Enterprise AI consulting firm offering strategy development, pilot-to-production implementation, regulated industry AI deployment, and technical due diligence.",
+          "Enterprise-level AI strategy and hands-on AI product coaching. Serving enterprises, founders, and small businesses with practical AI implementation.",
         url: SITE_URL,
         address: {
           "@type": "PostalAddress",
@@ -182,6 +185,16 @@ export const OrganizationSchema = () => {
                 url: `${SITE_URL}/ai-advisory`,
                 description:
                   "Expert evaluation of AI talent, vendors, and technology investments to inform hiring and procurement decisions.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "AI Product Coaching",
+                url: `${SITE_URL}/hands-on-ai-product-coaching`,
+                description:
+                  "Hands-on AI product coaching for founders and small businesses. Build AI-powered apps, custom GPTs, and AI workflows with expert guidance.",
               },
             },
           ],

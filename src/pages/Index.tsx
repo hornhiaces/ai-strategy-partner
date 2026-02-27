@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import Philosophy from "@/components/Philosophy";
 import DeliveryFramework from "@/components/DeliveryFramework";
 import Credibility from "@/components/Credibility";
+import ComingSoon from "@/components/ComingSoon";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
@@ -20,8 +22,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Enterprise AI Consulting & Strategy | Salinas AI Consulting"
-        description="Enterprise AI consulting for healthcare, finance & government. Strategy to production-ready systems. 15+ years experience. Free consultation."
+        title="AI Strategy & Product Coaching | Salinas AI Consulting"
+        description="Enterprise-level AI strategy with hands-on execution capability. AI consulting for enterprises, founders & small businesses. Free consultation."
         path="/"
       />
       <OrganizationSchema />
@@ -33,12 +35,16 @@ const Index = () => {
       <section id="services">
         <Services />
       </section>
+      <section id="philosophy">
+        <Philosophy />
+      </section>
       <section id="approach">
         <DeliveryFramework />
       </section>
       <section id="about">
         <Credibility />
       </section>
+      <ComingSoon />
       <section id="contact">
         <FinalCTA />
       </section>
