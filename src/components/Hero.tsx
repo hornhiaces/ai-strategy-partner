@@ -11,11 +11,11 @@ const Hero = () => {
           </p>
 
           <h1 className="text-4xl md:text-display text-strong mb-5 leading-tight animate-hero-load animate-hero-load-delay-2">
-            AI that <span className="text-primary">ships</span>—not just slides
+            Enterprise AI Consulting That <span className="text-primary">Delivers</span> Working Systems
           </h1>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed animate-hero-load animate-hero-load-delay-3">
-            I help organizations move AI and Generative AI from strategy to working systems, with a focus on regulated industries like healthcare and financial services.
+            I help enterprises move AI and Generative AI from strategy to production — with deep expertise in regulated industries including healthcare, financial services, and government.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-8 animate-hero-load animate-hero-load-delay-4">
