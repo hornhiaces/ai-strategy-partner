@@ -31,7 +31,7 @@ const FinalCTA = () => {
           </Button>
           
           <Button size="lg" variant="ghost" className="px-8 py-6 text-base font-medium rounded-lg text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300" asChild>
-            <a href="https://linkedin.com/in/larry-salinas-mba-56394934">
+            <a href="/out?to=linkedin" target="_blank" rel="noopener noreferrer">
               <Linkedin className="mr-2 h-5 w-5" />
               Connect on LinkedIn
             </a>

@@ -116,7 +116,9 @@ const ServicePageLayout = ({
                 asChild
               >
                 <a
-                  href="https://linkedin.com/in/larry-salinas-mba-56394934"
+                  href="/out?to=linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Linkedin className="mr-2 h-4 w-4" />
                   Connect on LinkedIn
