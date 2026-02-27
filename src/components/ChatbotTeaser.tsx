@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import Lottie from "lottie-react";
-import robotAnimation from "@/assets/robot-animation.json";
+import { useState, useEffect, useCallback, useRef, lazy, Suspense } from "react";
+
+const Lottie = lazy(() => import("lottie-react"));
 
 type ChatbotTeaserProps = {
   onClick: () => void;
@@ -18,6 +18,7 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
   const [visible, setVisible] = useState(false);
   const [messageIndex, setMessageIndex] = useState(0);
   const [fadeState, setFadeState] = useState<"in" | "out" | "hidden">("hidden");
+  const [animationData, setAnimationData] = useState<unknown>(null);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -48,6 +49,15 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
       }, 400);
     }, 6000);
   }, [chatOpen, clearTimers]);
+
+  // Lazy-load the robot animation data only when first visible
+  useEffect(() => {
+    if (visible && !animationData) {
+      import("@/assets/robot-animation.json").then((mod) => {
+        setAnimationData(mod.default);
+      });
+    }
+  }, [visible, animationData]);
 
   // Show on initial load after 1.5s, then every 30s
   useEffect(() => {
@@ -107,13 +117,19 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
         <div className="absolute -right-[7px] bottom-3 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-card" />
       </div>
 
-      {/* Robot animation */}
+      {/* Robot animation - lazy loaded */}
       <div className="w-16 h-16 flex-shrink-0">
-        <Lottie
-          animationData={robotAnimation}
-          loop
-          className="w-full h-full drop-shadow-md"
-        />
+        {animationData ? (
+          <Suspense fallback={<div className="w-full h-full rounded-full bg-primary/10" />}>
+            <Lottie
+              animationData={animationData}
+              loop
+              className="w-full h-full drop-shadow-md"
+            />
+          </Suspense>
+        ) : (
+          <div className="w-full h-full rounded-full bg-primary/10 animate-pulse" />
+        )}
       </div>
     </div>
   );

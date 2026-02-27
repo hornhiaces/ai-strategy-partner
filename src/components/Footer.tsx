@@ -1,5 +1,5 @@
 import { Linkedin, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const sectionLinks = [
   { label: "Services", href: "#services" },
@@ -19,10 +19,18 @@ const serviceLinks = [
 ];
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
+
   const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (isHomePage) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/" + href);
     }
   };
 
@@ -32,7 +40,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-1.5 mb-4">
+            <Link to="/" className="flex items-center gap-1.5 mb-4">
               <span className="text-lg font-semibold tracking-tight text-strong">
                 Salinas
               </span>
@@ -40,7 +48,7 @@ const Footer = () => {
               <span className="text-lg font-medium tracking-tight text-primary">
                 AI Consulting
               </span>
-            </div>
+            </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Enterprise-level AI strategy with hands-on execution capability. Serving organizations of any size.
             </p>
@@ -49,7 +57,7 @@ const Footer = () => {
           {/* Services Column */}
           <div>
             <h3 className="text-sm font-semibold text-strong mb-4">Services</h3>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Service pages" className="flex flex-col gap-2">
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -65,11 +73,11 @@ const Footer = () => {
           {/* Navigation Column */}
           <div>
             <h3 className="text-sm font-semibold text-strong mb-4">Quick Links</h3>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Page sections" className="flex flex-col gap-2">
               {sectionLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(link.href);

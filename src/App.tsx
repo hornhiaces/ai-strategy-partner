@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -19,30 +20,32 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const queryClient = new QueryClient();
 
 const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Suspense fallback={<div className="min-h-screen bg-background" />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/ai-consulting" element={<AIConsulting />} />
-              <Route path="/enterprise-ai-strategy" element={<EnterpriseAIStrategy />} />
-              <Route path="/ai-automation" element={<AIAutomation />} />
-              <Route path="/ai-integration" element={<AIIntegration />} />
-              <Route path="/ai-advisory" element={<AIAdvisory />} />
-              <Route path="/hands-on-ai-product-coaching" element={<HandsOnAIProductCoaching />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
+  <ErrorBoundary>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Suspense fallback={<div className="min-h-screen bg-background" />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/ai-consulting" element={<AIConsulting />} />
+                <Route path="/enterprise-ai-strategy" element={<EnterpriseAIStrategy />} />
+                <Route path="/ai-automation" element={<AIAutomation />} />
+                <Route path="/ai-integration" element={<AIIntegration />} />
+                <Route path="/ai-advisory" element={<AIAdvisory />} />
+                <Route path="/hands-on-ai-product-coaching" element={<HandsOnAIProductCoaching />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </ErrorBoundary>
 );
 
 export default App;
