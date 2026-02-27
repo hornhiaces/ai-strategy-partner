@@ -34,15 +34,16 @@ const Hero = () => {
               </Link>
             </Button>
 
-            <a
-              href="https://www.linkedin.com/in/larry-salinas-mba-56394934"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 h-11 whitespace-nowrap px-6 py-5 text-base font-medium rounded-lg border-2 border-input bg-background hover:border-primary hover:bg-primary/5 transition-all duration-300"
-            >
-              <Linkedin className="h-4 w-4" />
-              Connect on LinkedIn
-            </a>
+            <Button variant="outline" size="lg" className="px-6 py-5 text-base font-medium rounded-lg border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300" asChild>
+              <a
+                href="https://www.linkedin.com/in/larry-salinas-mba-56394934"
+                target="_top"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="h-4 w-4" />
+                Connect on LinkedIn
+              </a>
+            </Button>
           </div>
 
         </div>
