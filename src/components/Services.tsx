@@ -43,7 +43,7 @@ const Services = () => {
             Services
           </p>
           <h2 className="text-display-sm text-strong mb-4">
-            What I do
+            AI Consulting Services for Regulated Industries
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
             Focused on outcomes: working systems, clear decisions, and teams ready to own it.

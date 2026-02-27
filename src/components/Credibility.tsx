@@ -43,7 +43,7 @@ const Credibility = () => {
             About
           </p>
           <h2 className="text-display-sm text-strong mb-4">
-            Built on experience, not theory
+            Why Choose Salinas AI Consulting
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm leading-relaxed">
             Years at the intersection of AI technology and business reality—helping organizations 

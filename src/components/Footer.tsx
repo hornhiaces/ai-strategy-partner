@@ -40,13 +40,17 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-strong mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-2">
               {footerLinks.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
             </nav>
           </div>

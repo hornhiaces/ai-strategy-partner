@@ -49,7 +49,7 @@ const DeliveryFramework = () => {
             The Framework
           </p>
           <h2 className="text-display-sm text-strong mb-4">
-            From strategy to production
+            Our Proven AI Implementation Approach
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
             A disciplined, repeatable approach that gets AI out of the lab and into your business.
