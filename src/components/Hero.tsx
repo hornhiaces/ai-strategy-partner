@@ -33,6 +33,13 @@ const Hero = () => {
                 Explore Coaching
               </Link>
             </Button>
+
+            <Button variant="outline" size="lg" className="px-6 py-5 text-base font-medium rounded-lg border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300" asChild>
+              <a href="https://linkedin.com/in/larry-salinas-mba-56394934" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="mr-2 h-4 w-4" />
+                Connect on LinkedIn
+              </a>
+            </Button>
           </div>
 
           {/* Trust indicators */}
@@ -40,13 +47,6 @@ const Hero = () => {
             <div className="flex items-center gap-1.5">
               <Building2 className="h-3.5 w-3.5 text-primary/70" />
               <span>Enterprise &amp; Startups</span>
-            </div>
-            <div className="hidden sm:block w-px h-3 bg-border" />
-            <div className="flex items-center gap-1.5">
-              <Linkedin className="h-3.5 w-3.5 text-primary/70" />
-              <a href="https://linkedin.com/in/larry-salinas-mba-56394934" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                Connect on LinkedIn
-              </a>
             </div>
           </div>
         </div>
