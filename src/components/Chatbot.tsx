@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Loader2, User, Bot, Mail, ArrowLeft, ShieldAlert, Sparkles } from "lucide-react";
+import ChatbotTeaser from "./ChatbotTeaser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -244,6 +245,9 @@ const Chatbot = () => {
 
   return (
     <>
+      {/* Teaser robot */}
+      <ChatbotTeaser onClick={() => setIsOpen(true)} chatOpen={isOpen} />
+
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
