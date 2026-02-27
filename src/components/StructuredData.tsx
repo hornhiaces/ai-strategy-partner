@@ -74,9 +74,9 @@ export const OrganizationSchema = () => {
           "Independent AI consultant with 15+ years of experience. Enterprise AI strategy and hands-on AI product coaching for organizations of any size.",
         url: SITE_URL,
         sameAs: ["https://linkedin.com/in/larry-salinas-mba-56394934"],
-        alumniOf: {
-          "@type": "EducationalOrganization",
-          name: "MBA Program",
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "MBA",
         },
         knowsAbout: [
           "AI Strategy",
@@ -104,7 +104,7 @@ export const OrganizationSchema = () => {
         },
       },
       {
-        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#service`,
         name: "Salinas AI Consulting",
         provider: {

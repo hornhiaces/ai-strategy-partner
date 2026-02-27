@@ -32,22 +32,12 @@ const Index = () => {
 
       <Header />
       <Hero />
-      <section id="services">
-        <Services />
-      </section>
-      <section id="philosophy">
-        <Philosophy />
-      </section>
-      <section id="approach">
-        <DeliveryFramework />
-      </section>
-      <section id="about">
-        <Credibility />
-      </section>
+      <Services />
+      <Philosophy />
+      <DeliveryFramework />
+      <Credibility />
       <ComingSoon />
-      <section id="contact">
-        <FinalCTA />
-      </section>
+      <FinalCTA />
       <Footer />
       <Chatbot />
     </div>

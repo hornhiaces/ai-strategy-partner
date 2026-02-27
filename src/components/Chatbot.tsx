@@ -93,8 +93,14 @@ const Chatbot = () => {
       });
 
       if (!resp.ok) {
-        const errorData = await resp.json();
-        throw new Error(errorData.error || "Failed to get response");
+        let errorMessage = "Failed to get response";
+        try {
+          const errorData = await resp.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          // Non-JSON error response
+        }
+        throw new Error(errorMessage);
       }
 
       if (!resp.body) throw new Error("No response body");
@@ -214,8 +220,14 @@ const Chatbot = () => {
       });
 
       if (!resp.ok) {
-        const errorData = await resp.json();
-        throw new Error(errorData.error || "Failed to send message");
+        let errorMessage = "Failed to send message";
+        try {
+          const errorData = await resp.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          // Non-JSON error response
+        }
+        throw new Error(errorMessage);
       }
 
       toast({
@@ -261,7 +273,11 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+        <div
+          role="dialog"
+          aria-label="AI Advisor Chat"
+          className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
+        >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-primary text-primary-foreground">
             <div className="flex items-center gap-2">
@@ -299,9 +315,10 @@ const Chatbot = () => {
                   disabled={isSubmitting}
                   maxLength={100}
                   aria-invalid={!!formErrors.name}
+                  aria-describedby={formErrors.name ? "name-error" : undefined}
                 />
                 {formErrors.name && (
-                  <p className="text-xs text-destructive">{formErrors.name}</p>
+                  <p id="name-error" className="text-xs text-destructive">{formErrors.name}</p>
                 )}
               </div>
               <div className="space-y-1.5">
@@ -315,9 +332,10 @@ const Chatbot = () => {
                   disabled={isSubmitting}
                   maxLength={255}
                   aria-invalid={!!formErrors.email}
+                  aria-describedby={formErrors.email ? "email-error" : undefined}
                 />
                 {formErrors.email && (
-                  <p className="text-xs text-destructive">{formErrors.email}</p>
+                  <p id="email-error" className="text-xs text-destructive">{formErrors.email}</p>
                 )}
               </div>
               <div className="space-y-1.5 flex-1">
@@ -331,9 +349,10 @@ const Chatbot = () => {
                   className="min-h-[80px] resize-none"
                   maxLength={2000}
                   aria-invalid={!!formErrors.message}
+                  aria-describedby={formErrors.message ? "message-error" : undefined}
                 />
                 {formErrors.message && (
-                  <p className="text-xs text-destructive">{formErrors.message}</p>
+                  <p id="message-error" className="text-xs text-destructive">{formErrors.message}</p>
                 )}
                 <p className="text-xs text-muted-foreground text-right">
                   {formData.message.length}/2000
@@ -377,10 +396,10 @@ const Chatbot = () => {
               </div>
 
               <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-                <div className="space-y-4">
+                <div className="space-y-4" role="log" aria-live="polite" aria-label="Chat messages">
                   {messages.map((msg, i) => (
                     <div
-                      key={i}
+                      key={`${msg.role}-${i}`}
                       className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                     >
                       {msg.role === "assistant" && (
