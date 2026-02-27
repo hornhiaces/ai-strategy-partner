@@ -1,10 +1,19 @@
 import { Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const footerLinks = [
+const sectionLinks = [
   { label: "Services", href: "#services" },
   { label: "Approach", href: "#approach" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
+];
+
+const serviceLinks = [
+  { label: "AI Consulting", href: "/ai-consulting" },
+  { label: "Enterprise AI Strategy", href: "/enterprise-ai-strategy" },
+  { label: "AI Automation", href: "/ai-automation" },
+  { label: "AI Integration", href: "/ai-integration" },
+  { label: "AI Advisory", href: "/ai-advisory" },
 ];
 
 const Footer = () => {
@@ -18,7 +27,7 @@ const Footer = () => {
   return (
     <footer className="py-12 px-6 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Brand Column */}
           <div>
             <div className="flex items-center gap-1.5 mb-4">
@@ -35,11 +44,27 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Services Column */}
+          <div>
+            <h3 className="text-sm font-semibold text-strong mb-4">Services</h3>
+            <nav className="flex flex-col gap-2">
+              {serviceLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
           {/* Navigation Column */}
           <div>
             <h3 className="text-sm font-semibold text-strong mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-2">
-              {footerLinks.map((link) => (
+              {sectionLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -83,10 +108,10 @@ const Footer = () => {
         <div className="pt-8 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} Salinas AI Consulting. All rights reserved.
+              &copy; {new Date().getFullYear()} Salinas AI Consulting. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">
-              Independent AI advisory services · Chicago, IL · Serving clients globally
+              Independent AI advisory services &middot; Chicago, IL &middot; Serving clients globally
             </p>
           </div>
         </div>

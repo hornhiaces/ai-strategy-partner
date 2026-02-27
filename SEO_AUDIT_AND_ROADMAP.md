@@ -1,5 +1,5 @@
 # SEO Audit & Implementation Roadmap
-## Salinas AI Consulting — salinas-ai-consing.com
+## Salinas AI Consulting — salinas-ai-consulting.com
 ### Audit Date: February 27, 2026
 
 ---
@@ -9,7 +9,7 @@
 ### 1.1 CRITICAL: Domain/Canonical Mismatch
 
 **What is wrong:**
-The live website is served at `https://salinas-ai-consing.com`, but every canonical URL, Open Graph tag, Twitter Card, structured data reference, sitemap, and robots.txt points to `https://salinasaiconsulting.com`. This is a **domain-level SEO catastrophe**.
+The live website is served at `https://salinas-ai-consulting.com`, but every canonical URL, Open Graph tag, Twitter Card, structured data reference, sitemap, and robots.txt points to `https://salinasaiconsulting.com`. This is a **domain-level SEO catastrophe**.
 
 **Why it matters:**
 - Google sees the canonical as a *different domain*, so it may defer indexing to a URL that doesn't resolve or resolves differently.
@@ -20,24 +20,24 @@ The live website is served at `https://salinas-ai-consing.com`, but every canoni
 **Impact: CRITICAL**
 
 **Fix:**
-Every reference to `salinasaiconsulting.com` must be updated to `salinas-ai-consing.com` (or vice versa — if you own both domains, pick ONE and 301-redirect the other). Affected locations:
+Every reference to `salinasaiconsulting.com` must be updated to `salinas-ai-consulting.com` (or vice versa — if you own both domains, pick ONE and 301-redirect the other). Affected locations:
 
 ```html
 <!-- index.html — Canonical -->
-<link rel="canonical" href="https://salinas-ai-consing.com" />
+<link rel="canonical" href="https://salinas-ai-consulting.com" />
 
 <!-- index.html — Open Graph -->
-<meta property="og:url" content="https://salinas-ai-consing.com" />
+<meta property="og:url" content="https://salinas-ai-consulting.com" />
 
 <!-- index.html — Twitter -->
-<meta name="twitter:url" content="https://salinas-ai-consing.com" />
+<meta name="twitter:url" content="https://salinas-ai-consulting.com" />
 
 <!-- All JSON-LD @id and url fields -->
 <!-- sitemap.xml — all <loc> entries -->
 <!-- robots.txt — Sitemap directive -->
 ```
 
-> **Owner decision required:** If you own `salinasaiconsulting.com` AND `salinas-ai-consing.com`, consolidate to ONE domain with a 301 redirect on the other. Prefer the cleaner spelling: `salinasaiconsulting.com`.
+> **Owner decision required:** If you own `salinasaiconsulting.com` AND `salinas-ai-consulting.com`, consolidate to ONE domain with a 301 redirect on the other. Prefer the cleaner spelling: `salinasaiconsulting.com`.
 
 ---
 
@@ -100,13 +100,13 @@ Remove all hash-fragment URLs. The sitemap should only contain real, server-reso
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://salinas-ai-consing.com/</loc>
+    <loc>https://salinas-ai-consulting.com/</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://salinas-ai-consing.com/llm.html</loc>
+    <loc>https://salinas-ai-consulting.com/llm.html</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -132,13 +132,13 @@ The Open Graph and Twitter Card images point to `https://ai-clarity-connect.lova
 
 **Fix:**
 ```html
-<meta property="og:image" content="https://salinas-ai-consing.com/og-image.png" />
-<meta name="twitter:image" content="https://salinas-ai-consing.com/og-image.png" />
+<meta property="og:image" content="https://salinas-ai-consulting.com/og-image.png" />
+<meta name="twitter:image" content="https://salinas-ai-consulting.com/og-image.png" />
 ```
 
 Also update the JSON-LD Organization logo:
 ```json
-"logo": "https://salinas-ai-consing.com/og-image.png"
+"logo": "https://salinas-ai-consulting.com/og-image.png"
 ```
 
 ---
@@ -397,12 +397,12 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://salinas-ai-consing.com/#organization",
+      "@id": "https://salinas-ai-consulting.com/#organization",
       "name": "Salinas AI Consulting",
-      "url": "https://salinas-ai-consing.com",
+      "url": "https://salinas-ai-consulting.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://salinas-ai-consing.com/og-image.png",
+        "url": "https://salinas-ai-consulting.com/og-image.png",
         "width": 1200,
         "height": 672
       },
@@ -410,7 +410,7 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
       "foundingDate": "2024",
       "founder": {
         "@type": "Person",
-        "@id": "https://salinas-ai-consing.com/#founder"
+        "@id": "https://salinas-ai-consulting.com/#founder"
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -440,11 +440,11 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
     },
     {
       "@type": "Person",
-      "@id": "https://salinas-ai-consing.com/#founder",
+      "@id": "https://salinas-ai-consulting.com/#founder",
       "name": "Larry Salinas",
       "jobTitle": "Enterprise AI Consultant",
       "description": "Independent AI consultant with 15+ years of experience helping enterprises implement AI solutions in regulated industries including healthcare, financial services, and government.",
-      "url": "https://salinas-ai-consing.com",
+      "url": "https://salinas-ai-consulting.com",
       "sameAs": [
         "https://linkedin.com/in/larry-salinas-mba-56394934"
       ],
@@ -463,31 +463,31 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
       ],
       "worksFor": {
         "@type": "Organization",
-        "@id": "https://salinas-ai-consing.com/#organization"
+        "@id": "https://salinas-ai-consulting.com/#organization"
       }
     },
     {
       "@type": "WebSite",
-      "@id": "https://salinas-ai-consing.com/#website",
-      "url": "https://salinas-ai-consing.com",
+      "@id": "https://salinas-ai-consulting.com/#website",
+      "url": "https://salinas-ai-consulting.com",
       "name": "Salinas AI Consulting",
       "description": "Enterprise AI Consulting & Advisory Services",
       "publisher": {
         "@type": "Organization",
-        "@id": "https://salinas-ai-consing.com/#organization"
+        "@id": "https://salinas-ai-consulting.com/#organization"
       }
     },
     {
       "@type": ["ProfessionalService", "LocalBusiness"],
-      "@id": "https://salinas-ai-consing.com/#service",
+      "@id": "https://salinas-ai-consulting.com/#service",
       "name": "Salinas AI Consulting",
       "provider": {
         "@type": "Organization",
-        "@id": "https://salinas-ai-consing.com/#organization"
+        "@id": "https://salinas-ai-consulting.com/#organization"
       },
       "serviceType": "AI Consulting",
       "description": "Enterprise AI consulting firm offering strategy development, pilot-to-production implementation, regulated industry AI deployment, and technical due diligence.",
-      "url": "https://salinas-ai-consing.com",
+      "url": "https://salinas-ai-consulting.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chicago",
@@ -547,7 +547,7 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
     },
     {
       "@type": "FAQPage",
-      "@id": "https://salinas-ai-consing.com/#faq",
+      "@id": "https://salinas-ai-consulting.com/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -593,13 +593,13 @@ Your existing JSON-LD is actually quite solid — Organization, Person, Professi
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://salinas-ai-consing.com/#breadcrumb",
+      "@id": "https://salinas-ai-consulting.com/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://salinas-ai-consing.com"
+          "item": "https://salinas-ai-consulting.com"
         }
       ]
     }
