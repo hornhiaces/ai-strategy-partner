@@ -46,8 +46,8 @@ const Credibility = () => {
             Why Choose Salinas AI Consulting
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm leading-relaxed">
-            Years at the intersection of AI technology and business reality—helping organizations 
-            move from ambitious strategies to systems that actually work.
+            Years at the intersection of AI technology and business reality — helping enterprises 
+            and founders move from ambitious strategies to systems that actually work.
           </p>
         </div>
 

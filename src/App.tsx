@@ -10,6 +10,7 @@ import EnterpriseAIStrategy from "./pages/EnterpriseAIStrategy";
 import AIAutomation from "./pages/AIAutomation";
 import AIIntegration from "./pages/AIIntegration";
 import AIAdvisory from "./pages/AIAdvisory";
+import HandsOnAIProductCoaching from "./pages/HandsOnAIProductCoaching";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/ai-automation" element={<AIAutomation />} />
             <Route path="/ai-integration" element={<AIIntegration />} />
             <Route path="/ai-advisory" element={<AIAdvisory />} />
+            <Route path="/hands-on-ai-product-coaching" element={<HandsOnAIProductCoaching />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

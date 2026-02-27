@@ -9,12 +9,12 @@ const FinalCTA = () => {
   return <section id="contact" className="py-16 md:py-20 px-6 bg-primary text-primary-foreground">
       <div ref={ref} className={`max-w-3xl mx-auto text-center animate-on-scroll ${isVisible ? 'is-visible' : ''}`}>
         <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
-          Start Your AI Transformation — Free Consultation
+          Ready to Move AI Forward? — Free Consultation
         </h2>
         
         <p className="text-lg text-primary-foreground/85 mb-4 leading-relaxed max-w-2xl mx-auto">
-          Every engagement starts with understanding your specific situation. 
-          The first conversation is always <span className="font-semibold text-primary-foreground">free and no-obligation</span>.
+          Whether you're leading AI adoption at an enterprise or building your first AI product as a founder — 
+          the first conversation is always <span className="font-semibold text-primary-foreground">free and no-obligation</span>.
         </p>
         
         <p className="text-primary-foreground/60 text-sm mb-10">

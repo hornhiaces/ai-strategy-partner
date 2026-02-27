@@ -1,4 +1,5 @@
-import { ArrowRight, Linkedin, Shield, Building2, Award } from "lucide-react";
+import { ArrowRight, Linkedin, Building2, Rocket } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -7,30 +8,30 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full">
         <div className="max-w-2xl">
           <p className="text-primary text-sm font-semibold tracking-wide uppercase mb-3 animate-hero-load animate-hero-load-delay-1">
-            Enterprise AI Advisory
+            AI Strategy &amp; Execution
           </p>
 
           <h1 className="text-4xl md:text-display text-strong mb-5 leading-tight animate-hero-load animate-hero-load-delay-2">
-            Enterprise AI Consulting That <span className="text-primary">Delivers</span> Working Systems
+            Enterprise-Level AI Strategy. <span className="text-primary">Practical Execution.</span> Any Size.
           </h1>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed animate-hero-load animate-hero-load-delay-3">
-            I help enterprises move AI and Generative AI from strategy to production — with deep expertise in regulated industries including healthcare, financial services, and government.
+            I help organizations adopt AI responsibly — from boardroom strategy to hands-on product builds.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-8 animate-hero-load animate-hero-load-delay-4">
             <Button size="lg" className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300" asChild>
               <a href="mailto:salinasaiconsulting@outlook.com">
-                Start a conversation
+                Book a Strategy Call
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
 
             <Button variant="outline" size="lg" className="px-6 py-5 text-base font-medium rounded-lg border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300" asChild>
-              <a href="https://linkedin.com/in/larry-salinas-mba-56394934" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-4 w-4" />
-                Connect on LinkedIn
-              </a>
+              <Link to="/hands-on-ai-product-coaching">
+                <Rocket className="mr-2 h-4 w-4" />
+                Explore Coaching
+              </Link>
             </Button>
           </div>
 
@@ -38,17 +39,14 @@ const Hero = () => {
           <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground animate-hero-load animate-hero-load-delay-4">
             <div className="flex items-center gap-1.5">
               <Building2 className="h-3.5 w-3.5 text-primary/70" />
-              <span>15+ Years Enterprise Experience</span>
+              <span>Enterprise &amp; Startups</span>
             </div>
             <div className="hidden sm:block w-px h-3 bg-border" />
             <div className="flex items-center gap-1.5">
-              <Shield className="h-3.5 w-3.5 text-primary/70" />
-              <span>Regulated Industry Expert</span>
-            </div>
-            <div className="hidden sm:block w-px h-3 bg-border" />
-            <div className="flex items-center gap-1.5">
-              <Award className="h-3.5 w-3.5 text-primary/70" />
-              <span>MBA Qualified</span>
+              <Linkedin className="h-3.5 w-3.5 text-primary/70" />
+              <a href="https://linkedin.com/in/larry-salinas-mba-56394934" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                Connect on LinkedIn
+              </a>
             </div>
           </div>
         </div>

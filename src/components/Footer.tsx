@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 const sectionLinks = [
   { label: "Services", href: "#services" },
+  { label: "Philosophy", href: "#philosophy" },
   { label: "Approach", href: "#approach" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 const serviceLinks = [
-  { label: "AI Consulting", href: "/ai-consulting" },
   { label: "Enterprise AI Strategy", href: "/enterprise-ai-strategy" },
+  { label: "AI Product Coaching", href: "/hands-on-ai-product-coaching" },
+  { label: "AI Consulting", href: "/ai-consulting" },
   { label: "AI Automation", href: "/ai-automation" },
   { label: "AI Integration", href: "/ai-integration" },
   { label: "AI Advisory", href: "/ai-advisory" },
@@ -40,7 +42,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Enterprise AI advisory helping organizations navigate strategy, implementation, and governance in regulated industries.
+              Enterprise-level AI strategy with hands-on execution capability. Serving organizations of any size.
             </p>
           </div>
 
