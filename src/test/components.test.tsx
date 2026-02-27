@@ -81,13 +81,13 @@ describe("Hero", () => {
     expect(mailtoLink).toHaveAttribute("href", "mailto:salinasaiconsulting@outlook.com");
   });
 
-  it("LinkedIn link uses same-tab navigation", async () => {
+  it("LinkedIn link opens redirect in a new tab", async () => {
     const { default: Hero } = await import("@/components/Hero");
     render(<Hero />, { wrapper: TestWrapper });
 
     const linkedinLink = screen.getByText("Connect on LinkedIn").closest("a");
-    expect(linkedinLink).toHaveAttribute("href", "https://www.linkedin.com/in/larry-salinas-mba-56394934");
-    expect(linkedinLink).not.toHaveAttribute("target");
+    expect(linkedinLink).toHaveAttribute("href", "/out?to=linkedin");
+    expect(linkedinLink).toHaveAttribute("target", "_blank");
   });
 });
 

@@ -15,6 +15,7 @@ const AIAutomation = lazy(() => import("./pages/AIAutomation"));
 const AIIntegration = lazy(() => import("./pages/AIIntegration"));
 const AIAdvisory = lazy(() => import("./pages/AIAdvisory"));
 const HandsOnAIProductCoaching = lazy(() => import("./pages/HandsOnAIProductCoaching"));
+const ExternalRedirect = lazy(() => import("./pages/ExternalRedirect"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="/ai-integration" element={<AIIntegration />} />
                 <Route path="/ai-advisory" element={<AIAdvisory />} />
                 <Route path="/hands-on-ai-product-coaching" element={<HandsOnAIProductCoaching />} />
+                <Route path="/out" element={<ExternalRedirect />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
