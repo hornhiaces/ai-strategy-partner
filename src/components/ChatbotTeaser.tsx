@@ -41,7 +41,7 @@ const ChatbotTeaser = ({ onClick, chatOpen }: ChatbotTeaserProps) => {
   useEffect(() => {
     const initialTimer = setTimeout(() => {
       showTeaser();
-    }, 3000);
+    }, 1500);
 
     const interval = setInterval(() => {
       showTeaser();
