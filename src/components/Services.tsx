@@ -95,13 +95,13 @@ const Services = () => {
               <Link
                 to="/enterprise-ai-strategy"
                 key={service.title}
-                className={`group bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 stagger-${index + 1} ${track1Visible ? "is-visible" : ""}`}
+                className={`group flex flex-col bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 stagger-${index + 1} ${track1Visible ? "is-visible" : ""}`}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
                   <service.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="text-lg font-semibold text-strong mb-3">{service.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                <h4 className="text-lg font-semibold text-strong mb-3 min-h-[3.5rem] flex items-start">{service.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{service.description}</p>
               </Link>
             ))}
           </div>
@@ -136,13 +136,13 @@ const Services = () => {
               <Link
                 to="/hands-on-ai-product-coaching"
                 key={service.title}
-                className={`group bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 stagger-${index + 1} ${track2Visible ? "is-visible" : ""}`}
+                className={`group flex flex-col bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 stagger-${index + 1} ${track2Visible ? "is-visible" : ""}`}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
                   <service.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="text-lg font-semibold text-strong mb-3">{service.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                <h4 className="text-lg font-semibold text-strong mb-3 min-h-[3.5rem] flex items-start">{service.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{service.description}</p>
               </Link>
             ))}
           </div>
