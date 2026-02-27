@@ -1,16 +1,26 @@
 # Salinas AI Consulting - Robots.txt
-# https://salinas-ai-consing.com
+# https://salinas-ai-consulting.com
 
 # Major Search Engines
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_private/
+Disallow: /dashboard
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_private/
+Disallow: /dashboard
 Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 # Social Media Crawlers
 User-agent: Twitterbot
@@ -25,6 +35,9 @@ Allow: /
 # AI Search Engine Crawlers - Explicitly allowed for GEO visibility
 User-agent: GPTBot
 Allow: /
+Allow: /llm.html
+Disallow: /admin
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -47,9 +60,23 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 # Default: allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_private/
+Disallow: /dashboard
+Disallow: /*.json$
 
 # Sitemap location
-Sitemap: https://salinas-ai-consing.com/sitemap.xml
+Sitemap: https://salinas-ai-consulting.com/sitemap.xml
+
+# Host
+Host: https://salinas-ai-consulting.com

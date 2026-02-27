@@ -4,19 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preconnect to external origins for faster resource loading -->
+    <!-- Preconnect to external origins for faster resource loading (CWV: reduces connection time) -->
     <link rel="preconnect" href="https://cdn.gpteng.co" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Primary Meta Tags -->
-    <title>AI Consulting for Enterprises | Salinas AI Consulting</title>
-    <meta name="title" content="AI Consulting for Enterprises | Salinas AI Consulting" />
-    <meta name="description" content="Enterprise AI consulting for healthcare, finance & government. From strategy to production-ready systems. 15+ years experience. Free initial consultation." />
+    <!-- DNS prefetch for non-critical third-party origins (CWV: reduces DNS lookup time) -->
+    <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Preload hero font to reduce LCP (CWV: font is render-critical) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+
+    <!-- Primary Meta Tags — optimized for enterprise AI consulting positioning -->
+    <title>Enterprise AI Consulting & Strategy | Salinas AI Consulting</title>
+    <meta name="title" content="Enterprise AI Consulting & Strategy | Salinas AI Consulting" />
+    <meta name="description" content="Enterprise AI consulting for healthcare, finance & government. Strategy to production-ready systems. 15+ years experience. Free consultation." />
     <meta name="author" content="Larry Salinas" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
-    <link rel="canonical" href="https://salinas-ai-consing.com/" />
+    <link rel="canonical" href="https://salinas-ai-consulting.com/" />
 
     <!-- Geographic and Business Meta -->
     <meta name="geo.region" content="US-IL" />
@@ -38,245 +46,36 @@
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook — 1200x630 OG image reference -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://salinas-ai-consing.com/" />
-    <meta property="og:title" content="AI Consulting for Enterprises | Salinas AI Consulting" />
-    <meta property="og:description" content="Enterprise AI consulting for healthcare, finance & government. From strategy to production-ready systems. 15+ years experience." />
+    <meta property="og:url" content="https://salinas-ai-consulting.com/" />
+    <meta property="og:title" content="Enterprise AI Consulting & Strategy | Salinas AI Consulting" />
+    <meta property="og:description" content="Enterprise AI consulting for healthcare, finance & government. Strategy to production-ready systems. 15+ years experience. Free consultation." />
     <meta property="og:site_name" content="Salinas AI Consulting" />
-    <meta property="og:image" content="https://salinas-ai-consing.com/og-image.png" />
+    <meta property="og:image" content="https://salinas-ai-consulting.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="672" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Salinas AI Consulting - Enterprise AI Strategy and Implementation Advisory" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://salinas-ai-consing.com/" />
-    <meta name="twitter:title" content="AI Consulting for Enterprises | Salinas AI Consulting" />
-    <meta name="twitter:description" content="Enterprise AI consulting for healthcare, finance & government. From strategy to production-ready systems. 15+ years experience." />
-    <meta name="twitter:image" content="https://salinas-ai-consing.com/og-image.png" />
+    <meta name="twitter:url" content="https://salinas-ai-consulting.com/" />
+    <meta name="twitter:title" content="Enterprise AI Consulting & Strategy | Salinas AI Consulting" />
+    <meta name="twitter:description" content="Enterprise AI consulting for healthcare, finance & government. Strategy to production-ready systems. 15+ years experience. Free consultation." />
+    <meta name="twitter:image" content="https://salinas-ai-consulting.com/og-image.png" />
     <meta name="twitter:image:alt" content="Salinas AI Consulting - Enterprise AI Strategy and Implementation Advisory" />
 
     <!-- LinkedIn specific -->
     <meta property="linkedin:owner" content="larry-salinas-mba-56394934" />
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://salinas-ai-consing.com/#organization",
-          "name": "Salinas AI Consulting",
-          "url": "https://salinas-ai-consing.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://salinas-ai-consing.com/og-image.png",
-            "width": 1200,
-            "height": 672
-          },
-          "description": "Enterprise AI consulting firm specializing in AI strategy, implementation, and governance for regulated industries including healthcare, financial services, and government.",
-          "foundingDate": "2024",
-          "founder": {
-            "@type": "Person",
-            "@id": "https://salinas-ai-consing.com/#founder"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "sales",
-            "email": "salinasaiconsulting@outlook.com",
-            "availableLanguage": ["English"]
-          },
-          "sameAs": [
-            "https://linkedin.com/in/larry-salinas-mba-56394934"
-          ],
-          "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-          },
-          "knowsAbout": [
-            "Artificial Intelligence",
-            "Machine Learning",
-            "Generative AI",
-            "AI Strategy",
-            "AI Governance",
-            "Healthcare AI",
-            "Financial Services AI",
-            "Government AI",
-            "AI Implementation",
-            "AI Consulting"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://salinas-ai-consing.com/#founder",
-          "name": "Larry Salinas",
-          "jobTitle": "Enterprise AI Consultant",
-          "description": "Independent AI consultant with 15+ years of experience helping enterprises implement AI solutions in regulated industries including healthcare, financial services, and government.",
-          "url": "https://salinas-ai-consing.com",
-          "sameAs": [
-            "https://linkedin.com/in/larry-salinas-mba-56394934"
-          ],
-          "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "MBA Program"
-          },
-          "knowsAbout": [
-            "AI Strategy",
-            "Enterprise AI Implementation",
-            "AI Governance",
-            "Regulated Industries",
-            "Healthcare Technology",
-            "Financial Services Technology",
-            "Generative AI"
-          ],
-          "worksFor": {
-            "@type": "Organization",
-            "@id": "https://salinas-ai-consing.com/#organization"
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://salinas-ai-consing.com/#website",
-          "url": "https://salinas-ai-consing.com",
-          "name": "Salinas AI Consulting",
-          "description": "Enterprise AI Consulting and Advisory Services",
-          "publisher": {
-            "@type": "Organization",
-            "@id": "https://salinas-ai-consing.com/#organization"
-          }
-        },
-        {
-          "@type": ["ProfessionalService", "LocalBusiness"],
-          "@id": "https://salinas-ai-consing.com/#service",
-          "name": "Salinas AI Consulting",
-          "provider": {
-            "@type": "Organization",
-            "@id": "https://salinas-ai-consing.com/#organization"
-          },
-          "serviceType": "AI Consulting",
-          "description": "Enterprise AI consulting firm offering strategy development, pilot-to-production implementation, regulated industry AI deployment, and technical due diligence.",
-          "url": "https://salinas-ai-consing.com",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Chicago",
-            "addressRegion": "IL",
-            "addressCountry": "US"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "41.8781",
-            "longitude": "-87.6298"
-          },
-          "priceRange": "$$$$",
-          "areaServed": [
-            {
-              "@type": "Country",
-              "name": "United States"
-            }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "AI Consulting Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Strategy Consulting",
-                  "description": "Strategic AI planning to identify where AI creates value for your business, with a clear implementation roadmap tailored to your industry and constraints."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Pilot to Production",
-                  "description": "Move AI initiatives from proof-of-concept to production-ready systems with proper governance, operations, and organizational readiness."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Regulated Industry AI Consulting",
-                  "description": "Specialized AI deployment for healthcare, financial services, and government with deep compliance and governance expertise."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Technical Due Diligence",
-                  "description": "Expert evaluation of AI talent, vendors, and technology investments to inform hiring and procurement decisions."
-                }
-              }
-            ]
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://salinas-ai-consing.com/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What does an AI consultant do for enterprises?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "An enterprise AI consultant helps organizations identify high-value AI opportunities, develop implementation strategies, select the right technologies and vendors, navigate regulatory requirements, and move AI projects from pilot to production. At Salinas AI Consulting, we focus specifically on regulated industries where governance and compliance are critical."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How much does enterprise AI consulting cost?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Enterprise AI consulting engagements typically range from focused assessments (1-2 weeks) to full implementation advisory (3-6 months). Pricing depends on scope, complexity, and industry requirements. Salinas AI Consulting offers a free initial consultation to assess your needs and provide a tailored proposal."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What industries does Salinas AI Consulting specialize in?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Salinas AI Consulting specializes in regulated industries including healthcare, financial services, and government. These sectors require deep understanding of compliance frameworks (HIPAA, SOX, FedRAMP), data governance, and risk management when deploying AI systems."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the difference between AI strategy and AI implementation consulting?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "AI strategy consulting focuses on identifying where AI creates business value and creating a roadmap. AI implementation consulting takes that strategy and turns it into working systems — selecting technologies, building governance frameworks, managing change, and ensuring production readiness. Salinas AI Consulting provides both, end-to-end."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How long does it take to implement AI in an enterprise?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "A typical enterprise AI implementation takes 3-12 months from strategy to production, depending on complexity, data readiness, and organizational maturity. Quick wins like process automation can be achieved in 4-8 weeks. Larger initiatives like predictive analytics platforms require 6-12 months for full deployment with proper governance."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://salinas-ai-consing.com/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://salinas-ai-consing.com"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
+    <!-- Favicon with multiple sizes for CWV (prevents layout shift from missing favicon) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Noscript font fallback (CWV: ensures text visible without JS) -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    </noscript>
   </head>
 
   <body>
@@ -300,15 +99,16 @@
           <section style="margin-top:2rem;">
             <h2>AI Consulting Services</h2>
             <ul style="line-height:2;">
-              <li><strong>AI Strategy Consulting</strong> &mdash; Identify where AI creates real value for your business. Get a clear implementation roadmap, not a buzzword-filled deck.</li>
-              <li><strong>AI Pilot to Production</strong> &mdash; Move past the demo stage. Ship AI that works in the real world, with governance and operations to keep it running.</li>
-              <li><strong>Regulated Industry AI</strong> &mdash; Healthcare, financial services, government &mdash; deploy AI where compliance and trust are non-negotiable.</li>
-              <li><strong>AI Technical Due Diligence</strong> &mdash; Evaluating AI talent, vendors, or investments? Get an honest, expert assessment before you commit.</li>
+              <li><a href="/ai-consulting"><strong>AI Consulting Services</strong></a> &mdash; End-to-end enterprise AI consulting from assessment through production deployment.</li>
+              <li><a href="/enterprise-ai-strategy"><strong>Enterprise AI Strategy</strong></a> &mdash; Strategic AI planning aligned with your business objectives and industry constraints.</li>
+              <li><a href="/ai-automation"><strong>AI Automation</strong></a> &mdash; Transform manual processes with intelligent automation that scales across your enterprise.</li>
+              <li><a href="/ai-integration"><strong>AI Integration</strong></a> &mdash; Seamlessly integrate AI into your existing enterprise infrastructure and workflows.</li>
+              <li><a href="/ai-advisory"><strong>AI Advisory &amp; Due Diligence</strong></a> &mdash; Evaluating AI talent, vendors, or investments? Get an honest, expert assessment.</li>
             </ul>
           </section>
 
           <section style="margin-top:2rem;">
-            <h2>Our Proven Approach</h2>
+            <h2>Our Proven AI Implementation Approach</h2>
             <ol style="line-height:2;">
               <li><strong>Understand</strong> &mdash; Your context, constraints, and what success looks like.</li>
               <li><strong>Assess</strong> &mdash; Technical feasibility, data readiness, and organizational capacity.</li>
