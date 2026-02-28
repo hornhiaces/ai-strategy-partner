@@ -21,7 +21,11 @@ const ComingSoon = () => {
           Expanding into mobile AI-enabled applications — helping organizations design, build, and ship AI-powered mobile experiences with the same practical execution approach.
         </p>
         <a
-          href="mailto:salinasaiconsulting@outlook.com"
+          href="#notify"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}?subject=Mobile AI Product Advisory - Notify Me`;
+          }}
           className="inline-flex items-center gap-1.5 text-primary text-sm font-medium hover:underline"
         >
           Get notified when it launches

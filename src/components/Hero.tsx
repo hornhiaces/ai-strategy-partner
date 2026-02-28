@@ -20,11 +20,15 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-8 animate-hero-load animate-hero-load-delay-4">
-            <Button size="lg" className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300" asChild>
-              <a href="mailto:salinasaiconsulting@outlook.com">
-                Book a Strategy Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+            <Button
+              size="lg"
+              className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              onClick={() => {
+                window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}`;
+              }}
+            >
+              Book a Strategy Call
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
 
             <Button variant="outline" size="lg" className="px-6 py-5 text-base font-medium rounded-lg border-2 hover:border-primary hover:bg-primary/5 transition-all duration-300" asChild>

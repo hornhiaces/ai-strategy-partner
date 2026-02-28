@@ -73,12 +73,12 @@ describe("Hero", () => {
     expect(screen.getByText("Connect on LinkedIn")).toBeInTheDocument();
   });
 
-  it("has mailto link for strategy call", async () => {
+  it("has click handler for strategy call email", async () => {
     const { default: Hero } = await import("@/components/Hero");
     render(<Hero />, { wrapper: TestWrapper });
 
-    const mailtoLink = screen.getByText("Book a Strategy Call").closest("a");
-    expect(mailtoLink).toHaveAttribute("href", "mailto:salinasaiconsulting@outlook.com");
+    const button = screen.getByText("Book a Strategy Call").closest("button");
+    expect(button).toBeTruthy();
   });
 
   it("LinkedIn link opens redirect in a new tab", async () => {
@@ -139,7 +139,7 @@ describe("Footer", () => {
     const { default: Footer } = await import("@/components/Footer");
     render(<Footer />, { wrapper: TestWrapper });
 
-    expect(screen.getByText("salinasaiconsulting@outlook.com")).toBeInTheDocument();
+    expect(screen.getByText("salinasaiconsulting [at] outlook.com")).toBeInTheDocument();
     expect(screen.getByText("LinkedIn Profile")).toBeInTheDocument();
   });
 

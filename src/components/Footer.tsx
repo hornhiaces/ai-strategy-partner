@@ -95,11 +95,15 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-strong mb-4">Get in Touch</h3>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:salinasaiconsulting@outlook.com"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}`;
+                }}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 <Mail className="h-4 w-4" />
-                salinasaiconsulting@outlook.com
+                salinasaiconsulting [at] outlook.com
               </a>
               <a
                 href="/out?to=linkedin"

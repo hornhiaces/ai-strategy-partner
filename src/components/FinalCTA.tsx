@@ -22,12 +22,17 @@ const FinalCTA = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button size="lg" variant="secondary" className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300" asChild>
-            <a href="mailto:salinasaiconsulting@outlook.com">
-              <Mail className="mr-2 h-4 w-4" />
-              Start a conversation
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+          <Button
+            size="lg"
+            variant="secondary"
+            className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/95 shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={() => {
+              window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}`;
+            }}
+          >
+            <Mail className="mr-2 h-4 w-4" />
+            Start a conversation
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           
           <Button size="lg" variant="ghost" className="px-8 py-6 text-base font-medium rounded-lg text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300" asChild>
