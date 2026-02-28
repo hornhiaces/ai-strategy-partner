@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import SEOHead from "@/components/SEOHead";
-import { ServiceSchema, BreadcrumbSchema } from "@/components/StructuredData";
+import { ServiceSchema, BreadcrumbSchema, FAQSchema, OrganizationSchema } from "@/components/StructuredData";
 import type { LucideIcon } from "lucide-react";
 
 const SITE_URL = "https://salinas-ai-consulting.com";
@@ -14,6 +14,11 @@ interface ServiceFeature {
   icon: LucideIcon;
   title: string;
   description: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
 }
 
 interface ServicePageProps {
@@ -28,12 +33,14 @@ interface ServicePageProps {
   detailSections: {
     heading: string;
     content: string;
+    bullets?: string[];
   }[];
   relatedServices: {
     label: string;
     href: string;
     description: string;
   }[];
+  faqs?: FAQItem[];
 }
 
 const ServicePageLayout = ({
@@ -47,10 +54,12 @@ const ServicePageLayout = ({
   features,
   detailSections,
   relatedServices,
+  faqs,
 }: ServicePageProps) => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead title={metaTitle} description={metaDescription} path={`/${slug}`} />
+      <OrganizationSchema />
       <ServiceSchema
         name={title}
         description={metaDescription}
@@ -62,6 +71,7 @@ const ServicePageLayout = ({
           { name: title, url: `${SITE_URL}/${slug}` },
         ]}
       />
+      {faqs && faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
       <Header />
 
@@ -102,12 +112,12 @@ const ServicePageLayout = ({
               <Button
                 size="lg"
                 className="group px-6 py-5 text-base font-semibold rounded-lg shadow-md shadow-primary/20"
-                asChild
+                onClick={() => {
+                  window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}`;
+                }}
               >
-                <a href="mailto:salinasaiconsulting@outlook.com">
-                  Request a consultation
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                Request a consultation
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
                 variant="outline"
@@ -167,10 +177,49 @@ const ServicePageLayout = ({
               <p className="text-muted-foreground leading-relaxed">
                 {section.content}
               </p>
+              {section.bullets && section.bullets.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {section.bullets.map((bullet) => (
+                    <li
+                      key={bullet}
+                      className="flex items-start gap-2 text-muted-foreground text-sm leading-relaxed"
+                    >
+                      <ChevronRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
       </section>
+
+      {/* FAQ Section */}
+      {faqs && faqs.length > 0 && (
+        <section className="py-12 md:py-16 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-display-sm text-strong mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {faqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="bg-card rounded-xl p-6 border border-border"
+                >
+                  <h3 className="text-lg font-semibold text-strong mb-3">
+                    {faq.question}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related Services */}
       <section className="py-12 md:py-16 px-6">
@@ -216,13 +265,13 @@ const ServicePageLayout = ({
               size="lg"
               variant="secondary"
               className="group px-8 py-6 text-base font-semibold rounded-lg bg-white text-primary hover:bg-white/95 shadow-lg"
-              asChild
+              onClick={() => {
+                window.location.href = `mailto:${"salinasaiconsulting"}@${"outlook.com"}`;
+              }}
             >
-              <a href="mailto:salinasaiconsulting@outlook.com">
-                <Mail className="mr-2 h-4 w-4" />
-                Start a conversation
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              <Mail className="mr-2 h-4 w-4" />
+              Start a conversation
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
         </div>

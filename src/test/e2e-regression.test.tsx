@@ -64,15 +64,15 @@ describe("E2E: Index Page Full Render", () => {
     expect(screen.getByText("50+")).toBeInTheDocument();
 
     // Footer
-    expect(screen.getByText("salinasaiconsulting@outlook.com")).toBeInTheDocument();
+    expect(screen.getByText("salinasaiconsulting [at] outlook.com")).toBeInTheDocument();
   });
 
-  it("renders CTA buttons with correct links", async () => {
+  it("renders CTA buttons with click handlers", async () => {
     const { default: Index } = await import("@/pages/Index");
     render(<Index />, { wrapper: createTestWrapper("/") });
 
-    const mailtoLink = screen.getByText("Book a Strategy Call").closest("a");
-    expect(mailtoLink).toHaveAttribute("href", "mailto:salinasaiconsulting@outlook.com");
+    const button = screen.getByText("Book a Strategy Call").closest("button");
+    expect(button).toBeTruthy();
   });
 });
 

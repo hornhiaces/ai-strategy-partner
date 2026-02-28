@@ -62,14 +62,51 @@ const AIAutomation = () => (
           "80% of enterprise AI projects never reach production. The gap between a working demo and a production system is massive — requiring governance frameworks, data pipelines, monitoring, error handling, and organizational change management. Salinas AI Consulting specializes in closing this gap, with a proven track record of moving AI from pilot to production in regulated enterprises.",
       },
       {
-        heading: "AI Automation in Regulated Industries",
+        heading: "Who Benefits from AI Automation Consulting?",
         content:
-          "Automating processes in healthcare, financial services, and government adds layers of complexity: audit requirements, explainability mandates, data privacy regulations, and risk management frameworks. We build compliance into every automation initiative from day one, ensuring your AI systems meet HIPAA, SOX, FedRAMP, and industry-specific regulatory requirements.",
+          "This service is designed for operations leaders, process owners, and technology teams in organizations where manual processes create bottlenecks, errors, or compliance risk.",
+        bullets: [
+          "Healthcare operations teams processing claims, prior authorizations, or clinical documentation",
+          "Financial services firms automating loan processing, KYC/AML checks, or regulatory reporting",
+          "Government agencies digitizing case management, benefits adjudication, or FOIA requests",
+          "Any enterprise where human-in-the-loop AI can reduce error rates and processing time",
+        ],
       },
       {
-        heading: "Building Automation That Your Team Can Own",
+        heading: "Automation Deliverables",
         content:
-          "We don't create automation black boxes that only we can maintain. Every engagement includes comprehensive team enablement — documentation, training, runbooks, and knowledge transfer so your team can operate, troubleshoot, and evolve AI automation systems independently after our engagement ends.",
+          "We deliver working automation systems, not slide decks. Every engagement produces production-ready outputs.",
+        bullets: [
+          "Process automation feasibility matrix scoring 10–20 candidate workflows",
+          "Production-ready automation for 1–3 priority workflows with monitoring dashboards",
+          "Compliance documentation: audit trails, explainability reports, data lineage maps",
+          "Runbooks and standard operating procedures for ongoing operations",
+          "Model performance baselines with drift detection and alerting",
+          "Team training covering troubleshooting, retraining triggers, and escalation procedures",
+        ],
+      },
+      {
+        heading: "How an Automation Engagement Works",
+        content:
+          "Our automation engagements are structured to deliver value incrementally — you see working automation early, not just at the end.",
+        bullets: [
+          "Weeks 1–2: Process mining — document current workflows, identify candidates, score by ROI",
+          "Weeks 3–4: Design — architecture, data pipeline design, compliance requirements mapping",
+          "Weeks 5–8: Build — iterative development with weekly demos and stakeholder feedback",
+          "Weeks 9–10: Harden — production monitoring, error handling, load testing, compliance validation",
+          "Weeks 11–12: Deploy & Transfer — go-live support, team training, runbook handoff",
+        ],
+      },
+      {
+        heading: "Risks Reduced Through Proper AI Automation",
+        content:
+          "Done right, AI automation doesn't just save time — it systematically reduces operational and compliance risk across your organization.",
+        bullets: [
+          "Manual processing errors reduced through consistent, auditable AI decision support",
+          "Compliance gaps closed with automated audit trails and explainability logging",
+          "Key-person dependencies eliminated by encoding institutional knowledge into workflows",
+          "Processing time SLAs met consistently through parallel, always-on automation",
+        ],
       },
     ]}
     relatedServices={[
@@ -90,6 +127,38 @@ const AIAutomation = () => (
         href: "/ai-integration",
         description:
           "Integrate AI automation into your existing technology stack.",
+      },
+    ]}
+    faqs={[
+      {
+        question: "What types of processes are good candidates for AI automation?",
+        answer:
+          "The best candidates are high-volume, rule-based processes with structured inputs — document processing, data extraction, classification, routing, and compliance checking. We also automate semi-structured workflows using LLMs for summarization, analysis, and intelligent triage. During discovery, we score 10–20 candidate processes on volume, complexity, error rate, and compliance impact.",
+      },
+      {
+        question: "How do you handle AI automation in regulated environments?",
+        answer:
+          "Compliance is built in from day one, not bolted on after deployment. We design audit trails, explainability layers, and human-in-the-loop checkpoints based on your regulatory framework — whether that's HIPAA, SOX, FINRA, or FedRAMP. Every automation includes documentation sufficient for regulatory review.",
+      },
+      {
+        question: "What's the typical ROI timeline for AI automation?",
+        answer:
+          "Most clients see measurable ROI within 3–6 months of deployment. Quick-win automations like document processing or routing often pay for themselves within the first quarter. More complex automations like predictive decision support take 6–12 months for full ROI but show early indicators within weeks.",
+      },
+      {
+        question: "Can you automate processes that involve unstructured data?",
+        answer:
+          "Yes. Large language models have dramatically expanded what can be automated. We build automations that handle PDFs, emails, clinical notes, contracts, and other unstructured content — with appropriate confidence thresholds and human review for edge cases.",
+      },
+      {
+        question: "What happens when the automation makes a mistake?",
+        answer:
+          "Every automation we build includes confidence scoring, exception routing, and human-in-the-loop escalation. When the system encounters an edge case or low-confidence decision, it flags it for human review. We also build monitoring dashboards that track accuracy over time and alert on drift.",
+      },
+      {
+        question: "Will our team need to maintain the automation after you leave?",
+        answer:
+          "Yes, and we make sure they can. Every engagement includes comprehensive handoff: runbooks, troubleshooting guides, retraining procedures, and hands-on training sessions. We design automations for maintainability, not dependency.",
       },
     ]}
   />
